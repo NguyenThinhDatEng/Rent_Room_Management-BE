@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "DV70Cvm9hFdzPtA1553P7TlLCcUtPOr40LuGLaI4YrgG9mYweXv4eaJMcwMuYBLEyqRTCR++4tUo2d1x1nbtFw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\RentRoomManagement.BL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\thinh\\.nuget\\packages\\dapper\\2.0.151\\dapper.2.0.151.nupkg.sha512",
+    "C:\\Users\\thinh\\.nuget\\packages\\mysqlconnector\\2.2.7\\mysqlconnector.2.2.7.nupkg.sha512"
+  ],
+  "logs": []
+}
