@@ -140,7 +140,18 @@ namespace RentRoomManagement.Common.Resources {
                 return ResourceManager.GetString("UserMsg_Exception", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        /// Thực thi không thành công
+        /// </summary>
+        public static string UserMsg_Fail_Execution
+        {
+            get
+            {
+                return ResourceManager.GetString("UserMsg_Fail_Execution", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Yêu cầu thất bại.
         /// </summary>

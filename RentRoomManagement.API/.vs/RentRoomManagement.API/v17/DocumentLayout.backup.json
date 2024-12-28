@@ -1,0 +1,743 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.api\\controllers\\action\\rentingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|solutionrelative:controllers\\action\\rentingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8C61FB5-2EF1-4F53-B0EF-5847EEF2C94E}|..\\RentRoomManagement.BL\\RentRoomManagement.BL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.bl\\tenant\\action\\rentingbl\\rentingbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8C61FB5-2EF1-4F53-B0EF-5847EEF2C94E}|..\\RentRoomManagement.BL\\RentRoomManagement.BL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.bl\\tenant\\action\\rentingbl\\irentingbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA2A7A2-8924-45F6-B841-E4BB9983925C}|..\\RentRoomManagement.DL\\RentRoomManagement.DL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.dl\\tenant\\action\\rentingdl\\rentingdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA2A7A2-8924-45F6-B841-E4BB9983925C}|..\\RentRoomManagement.DL\\RentRoomManagement.DL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.dl\\tenant\\action\\rentingdl\\irentingdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.api\\controllers\\dictionary\\roomcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|solutionrelative:controllers\\dictionary\\roomcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8C61FB5-2EF1-4F53-B0EF-5847EEF2C94E}|..\\RentRoomManagement.BL\\RentRoomManagement.BL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.bl\\tenant\\dictonary\\roomcategorybl\\roomcategorybl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8C61FB5-2EF1-4F53-B0EF-5847EEF2C94E}|..\\RentRoomManagement.BL\\RentRoomManagement.BL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.bl\\tenant\\dictonary\\roomcategorybl\\iroomcategorybl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA2A7A2-8924-45F6-B841-E4BB9983925C}|..\\RentRoomManagement.DL\\RentRoomManagement.DL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.dl\\tenant\\dictionary\\roomcategorydl\\roomcategorydl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA2A7A2-8924-45F6-B841-E4BB9983925C}|..\\RentRoomManagement.DL\\RentRoomManagement.DL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.dl\\tenant\\dictionary\\roomcategorydl\\iroomcategorydl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA2A7A2-8924-45F6-B841-E4BB9983925C}|..\\RentRoomManagement.DL\\RentRoomManagement.DL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.dl\\tenant\\dictionary\\roomdl\\iroomdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA2A7A2-8924-45F6-B841-E4BB9983925C}|..\\RentRoomManagement.DL\\RentRoomManagement.DL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.dl\\tenant\\dictionary\\roomdl\\roomdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170C5016-7CC0-4D20-9A16-8E21C6AEF808}|..\\RentRoomManagement.Common\\RentRoomManagement.Common.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.common\\entitites\\dictionary\\rentingentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170C5016-7CC0-4D20-9A16-8E21C6AEF808}|..\\RentRoomManagement.Common\\RentRoomManagement.Common.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.common\\entitites\\dictionary\\roomcategoryentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170C5016-7CC0-4D20-9A16-8E21C6AEF808}|..\\RentRoomManagement.Common\\RentRoomManagement.Common.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.common\\entitites\\dictionary\\room\\roomentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170C5016-7CC0-4D20-9A16-8E21C6AEF808}|..\\RentRoomManagement.Common\\RentRoomManagement.Common.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.common\\entitites\\dictionary\\room\\rentinguserentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170C5016-7CC0-4D20-9A16-8E21C6AEF808}|..\\RentRoomManagement.Common\\RentRoomManagement.Common.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.common\\entitites\\dictionary\\servicefeeentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170C5016-7CC0-4D20-9A16-8E21C6AEF808}|..\\RentRoomManagement.Common\\RentRoomManagement.Common.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.common\\entitites\\dictionary\\residententity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170C5016-7CC0-4D20-9A16-8E21C6AEF808}|..\\RentRoomManagement.Common\\RentRoomManagement.Common.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.common\\query\\filteritem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170C5016-7CC0-4D20-9A16-8E21C6AEF808}|..\\RentRoomManagement.Common\\RentRoomManagement.Common.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.common\\query\\pagingitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8C61FB5-2EF1-4F53-B0EF-5847EEF2C94E}|..\\RentRoomManagement.BL\\RentRoomManagement.BL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.bl\\tenant\\dictonary\\servicefeebl\\servicefeebl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8C61FB5-2EF1-4F53-B0EF-5847EEF2C94E}|..\\RentRoomManagement.BL\\RentRoomManagement.BL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.bl\\tenant\\dictonary\\servicefeebl\\iservicefeebl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.api\\controllers\\dictionary\\servicefeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|solutionrelative:controllers\\dictionary\\servicefeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.api\\controllers\\dictionary\\servicecategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|solutionrelative:controllers\\dictionary\\servicecategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.api\\controllers\\dictionary\\vehiclefeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|solutionrelative:controllers\\dictionary\\vehiclefeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8C61FB5-2EF1-4F53-B0EF-5847EEF2C94E}|..\\RentRoomManagement.BL\\RentRoomManagement.BL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.bl\\tenant\\dictonary\\vehiclefeebl\\ivehiclefeebl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8C61FB5-2EF1-4F53-B0EF-5847EEF2C94E}|..\\RentRoomManagement.BL\\RentRoomManagement.BL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.bl\\tenant\\dictonary\\vehiclefeebl\\vehiclefeebl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8C61FB5-2EF1-4F53-B0EF-5847EEF2C94E}|..\\RentRoomManagement.BL\\RentRoomManagement.BL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.bl\\basebl\\basebl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA2A7A2-8924-45F6-B841-E4BB9983925C}|..\\RentRoomManagement.DL\\RentRoomManagement.DL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.dl\\tenant\\dictionary\\servicefeedl\\servicefeedl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA2A7A2-8924-45F6-B841-E4BB9983925C}|..\\RentRoomManagement.DL\\RentRoomManagement.DL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.dl\\tenant\\dictionary\\servicefeedl\\iservicefeedl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170C5016-7CC0-4D20-9A16-8E21C6AEF808}|..\\RentRoomManagement.Common\\RentRoomManagement.Common.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.common\\entitites\\dictionary\\vehiclefeeentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA2A7A2-8924-45F6-B841-E4BB9983925C}|..\\RentRoomManagement.DL\\RentRoomManagement.DL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.dl\\tenant\\dictionary\\vehiclefeedl\\ivehiclefeedl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA2A7A2-8924-45F6-B841-E4BB9983925C}|..\\RentRoomManagement.DL\\RentRoomManagement.DL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.dl\\tenant\\dictionary\\vehiclefeedl\\vehiclefeedl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170C5016-7CC0-4D20-9A16-8E21C6AEF808}|..\\RentRoomManagement.Common\\RentRoomManagement.Common.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.common\\query\\sortitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170C5016-7CC0-4D20-9A16-8E21C6AEF808}|..\\RentRoomManagement.Common\\RentRoomManagement.Common.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.common\\query\\dictionarypagingitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.api\\controllers\\dictionary\\roomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|solutionrelative:controllers\\dictionary\\roomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.api\\controllers\\basescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|solutionrelative:controllers\\basescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8C61FB5-2EF1-4F53-B0EF-5847EEF2C94E}|..\\RentRoomManagement.BL\\RentRoomManagement.BL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.bl\\basebl\\ibasebl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.api\\controllers\\dictionary\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E44B372D-E537-4990-AF16-EFB1DD6AF527}|RentRoomManagement.API.csproj|solutionrelative:controllers\\dictionary\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA2A7A2-8924-45F6-B841-E4BB9983925C}|..\\RentRoomManagement.DL\\RentRoomManagement.DL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.dl\\basedl\\ibasedl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170C5016-7CC0-4D20-9A16-8E21C6AEF808}|..\\RentRoomManagement.Common\\RentRoomManagement.Common.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.common\\query\\idicpagingitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170C5016-7CC0-4D20-9A16-8E21C6AEF808}|..\\RentRoomManagement.Common\\RentRoomManagement.Common.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.common\\param\\roomfilterparam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8C61FB5-2EF1-4F53-B0EF-5847EEF2C94E}|..\\RentRoomManagement.BL\\RentRoomManagement.BL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.bl\\tenant\\roomsearch\\roompostbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DA2A7A2-8924-45F6-B841-E4BB9983925C}|..\\RentRoomManagement.DL\\RentRoomManagement.DL.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.dl\\basedl\\basedl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170C5016-7CC0-4D20-9A16-8E21C6AEF808}|..\\RentRoomManagement.Common\\RentRoomManagement.Common.csproj|c:\\users\\thinh\\source\\repos\\rentroommanagement\\rentroommanagement.common\\query\\ipagingitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RentingsController.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\Action\\RentingsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Action\\RentingsController.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\Action\\RentingsController.cs",
+              "RelativeToolTip": "Controllers\\Action\\RentingsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:34:13.342Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RentingBL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Action\\RentingBL\\RentingBL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.BL\\Tenant\\Action\\RentingBL\\RentingBL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Action\\RentingBL\\RentingBL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.BL\\Tenant\\Action\\RentingBL\\RentingBL.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA2wBcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:33:26.24Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IRentingBL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Action\\RentingBL\\IRentingBL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.BL\\Tenant\\Action\\RentingBL\\IRentingBL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Action\\RentingBL\\IRentingBL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.BL\\Tenant\\Action\\RentingBL\\IRentingBL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:33:07.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RentingDL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Action\\RentingDL\\RentingDL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.DL\\Tenant\\Action\\RentingDL\\RentingDL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Action\\RentingDL\\RentingDL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.DL\\Tenant\\Action\\RentingDL\\RentingDL.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAqwE8AAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:30:37.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IRentingDL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Action\\RentingDL\\IRentingDL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.DL\\Tenant\\Action\\RentingDL\\IRentingDL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Action\\RentingDL\\IRentingDL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.DL\\Tenant\\Action\\RentingDL\\IRentingDL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:28:37.69Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RoomCategoryBL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Dictonary\\RoomCategoryBL\\RoomCategoryBL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.BL\\Tenant\\Dictonary\\RoomCategoryBL\\RoomCategoryBL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Dictonary\\RoomCategoryBL\\RoomCategoryBL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.BL\\Tenant\\Dictonary\\RoomCategoryBL\\RoomCategoryBL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:27:20.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IRoomCategoryBL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Dictonary\\RoomCategoryBL\\IRoomCategoryBL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.BL\\Tenant\\Dictonary\\RoomCategoryBL\\IRoomCategoryBL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Dictonary\\RoomCategoryBL\\IRoomCategoryBL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.BL\\Tenant\\Dictonary\\RoomCategoryBL\\IRoomCategoryBL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:27:13.302Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RoomCategoryDL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomCategoryDL\\RoomCategoryDL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomCategoryDL\\RoomCategoryDL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomCategoryDL\\RoomCategoryDL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomCategoryDL\\RoomCategoryDL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:26:20.003Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IRoomCategoryDL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomCategoryDL\\IRoomCategoryDL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomCategoryDL\\IRoomCategoryDL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomCategoryDL\\IRoomCategoryDL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomCategoryDL\\IRoomCategoryDL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:26:06.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RoomDL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomDL\\RoomDL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomDL\\RoomDL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomDL\\RoomDL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomDL\\RoomDL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:25:06.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IRoomDL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomDL\\IRoomDL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomDL\\IRoomDL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomDL\\IRoomDL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\RoomDL\\IRoomDL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:25:04.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RentingEntity.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Entitites\\Dictionary\\RentingEntity.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.Common\\Entitites\\Dictionary\\RentingEntity.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Entitites\\Dictionary\\RentingEntity.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.Common\\Entitites\\Dictionary\\RentingEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:22:20.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RentingUserEntity.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Entitites\\Dictionary\\Room\\RentingUserEntity.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.Common\\Entitites\\Dictionary\\Room\\RentingUserEntity.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Entitites\\Dictionary\\Room\\RentingUserEntity.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.Common\\Entitites\\Dictionary\\Room\\RentingUserEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:21:25.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RoomEntity.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Entitites\\Dictionary\\Room\\RoomEntity.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.Common\\Entitites\\Dictionary\\Room\\RoomEntity.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Entitites\\Dictionary\\Room\\RoomEntity.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.Common\\Entitites\\Dictionary\\Room\\RoomEntity.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAIwBYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:19:23.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RoomCategoryEntity.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Entitites\\Dictionary\\RoomCategoryEntity.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.Common\\Entitites\\Dictionary\\RoomCategoryEntity.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Entitites\\Dictionary\\RoomCategoryEntity.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.Common\\Entitites\\Dictionary\\RoomCategoryEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:18:49.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ResidentEntity.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Entitites\\Dictionary\\ResidentEntity.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.Common\\Entitites\\Dictionary\\ResidentEntity.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Entitites\\Dictionary\\ResidentEntity.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.Common\\Entitites\\Dictionary\\ResidentEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T23:16:47.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ServiceFeeController.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\Dictionary\\ServiceFeeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Dictionary\\ServiceFeeController.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\Dictionary\\ServiceFeeController.cs",
+              "RelativeToolTip": "Controllers\\Dictionary\\ServiceFeeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T22:25:09.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "VehicleFeeBL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Dictonary\\VehicleFeeBL\\VehicleFeeBL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.BL\\Tenant\\Dictonary\\VehicleFeeBL\\VehicleFeeBL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Dictonary\\VehicleFeeBL\\VehicleFeeBL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.BL\\Tenant\\Dictonary\\VehicleFeeBL\\VehicleFeeBL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T22:05:15.338Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "IServiceFeeBL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Dictonary\\ServiceFeeBL\\IServiceFeeBL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.BL\\Tenant\\Dictonary\\ServiceFeeBL\\IServiceFeeBL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Dictonary\\ServiceFeeBL\\IServiceFeeBL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.BL\\Tenant\\Dictonary\\ServiceFeeBL\\IServiceFeeBL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T22:03:25.748Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ServiceFeeBL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Dictonary\\ServiceFeeBL\\ServiceFeeBL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.BL\\Tenant\\Dictonary\\ServiceFeeBL\\ServiceFeeBL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Dictonary\\ServiceFeeBL\\ServiceFeeBL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.BL\\Tenant\\Dictonary\\ServiceFeeBL\\ServiceFeeBL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T22:03:10.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ServiceFeeEntity.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Entitites\\Dictionary\\ServiceFeeEntity.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.Common\\Entitites\\Dictionary\\ServiceFeeEntity.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Entitites\\Dictionary\\ServiceFeeEntity.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.Common\\Entitites\\Dictionary\\ServiceFeeEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T21:59:09.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IServiceFeeDL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\ServiceFeeDL\\IServiceFeeDL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\ServiceFeeDL\\IServiceFeeDL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\ServiceFeeDL\\IServiceFeeDL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\ServiceFeeDL\\IServiceFeeDL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T21:58:15.675Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ServiceFeeDL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\ServiceFeeDL\\ServiceFeeDL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\ServiceFeeDL\\ServiceFeeDL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\ServiceFeeDL\\ServiceFeeDL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\ServiceFeeDL\\ServiceFeeDL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T21:57:57.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "IVehicleFeeDL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\VehicleFeeDL\\IVehicleFeeDL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\VehicleFeeDL\\IVehicleFeeDL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\VehicleFeeDL\\IVehicleFeeDL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\VehicleFeeDL\\IVehicleFeeDL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T21:56:15.35Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "VehicleFeeDL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\VehicleFeeDL\\VehicleFeeDL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\VehicleFeeDL\\VehicleFeeDL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\Tenant\\Dictionary\\VehicleFeeDL\\VehicleFeeDL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.DL\\Tenant\\Dictionary\\VehicleFeeDL\\VehicleFeeDL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T21:56:10.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "SortItem.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Query\\SortItem.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.Common\\Query\\SortItem.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Query\\SortItem.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.Common\\Query\\SortItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T22:23:54.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "IVehicleFeeBL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Dictonary\\VehicleFeeBL\\IVehicleFeeBL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.BL\\Tenant\\Dictonary\\VehicleFeeBL\\IVehicleFeeBL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\Dictonary\\VehicleFeeBL\\IVehicleFeeBL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.BL\\Tenant\\Dictonary\\VehicleFeeBL\\IVehicleFeeBL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T16:03:50.146Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "RoomsController.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\Dictionary\\RoomsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Dictionary\\RoomsController.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\Dictionary\\RoomsController.cs",
+              "RelativeToolTip": "Controllers\\Dictionary\\RoomsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T16:03:04.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\Dictionary\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Dictionary\\UsersController.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\Dictionary\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\Dictionary\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T16:03:26.376Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RoomCategoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\Dictionary\\RoomCategoriesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Dictionary\\RoomCategoriesController.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\Dictionary\\RoomCategoriesController.cs",
+              "RelativeToolTip": "Controllers\\Dictionary\\RoomCategoriesController.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T16:03:06.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ServiceCategoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\Dictionary\\ServiceCategoriesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Dictionary\\ServiceCategoriesController.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\Dictionary\\ServiceCategoriesController.cs",
+              "RelativeToolTip": "Controllers\\Dictionary\\ServiceCategoriesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T16:03:01.847Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAAADMAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T16:02:17.78Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "VehicleFeeController.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\Dictionary\\VehicleFeeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Dictionary\\VehicleFeeController.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\Dictionary\\VehicleFeeController.cs",
+              "RelativeToolTip": "Controllers\\Dictionary\\VehicleFeeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T15:54:31.888Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "VehicleFeeEntity.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Entitites\\Dictionary\\VehicleFeeEntity.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.Common\\Entitites\\Dictionary\\VehicleFeeEntity.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Entitites\\Dictionary\\VehicleFeeEntity.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.Common\\Entitites\\Dictionary\\VehicleFeeEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T15:28:27.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "RoomFilterParam.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Param\\RoomFilterParam.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.Common\\Param\\RoomFilterParam.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Param\\RoomFilterParam.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.Common\\Param\\RoomFilterParam.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T15:16:55.11Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "IDicPagingItem.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Query\\IDicPagingItem.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.Common\\Query\\IDicPagingItem.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Query\\IDicPagingItem.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.Common\\Query\\IDicPagingItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T15:14:03.002Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "IBaseDL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\BaseDL\\IBaseDL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.DL\\BaseDL\\IBaseDL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\BaseDL\\IBaseDL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.DL\\BaseDL\\IBaseDL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T15:10:16.151Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "FilterItem.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Query\\FilterItem.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.Common\\Query\\FilterItem.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Query\\FilterItem.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.Common\\Query\\FilterItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T15:08:23.095Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "DictionaryPagingItem.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Query\\DictionaryPagingItem.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.Common\\Query\\DictionaryPagingItem.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Query\\DictionaryPagingItem.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.Common\\Query\\DictionaryPagingItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T15:07:51.405Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "IPagingItem.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Query\\IPagingItem.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.Common\\Query\\IPagingItem.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Query\\IPagingItem.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.Common\\Query\\IPagingItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T15:05:10.513Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "RoomPostBL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\RoomSearch\\RoomPostBL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.BL\\Tenant\\RoomSearch\\RoomPostBL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\Tenant\\RoomSearch\\RoomPostBL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.BL\\Tenant\\RoomSearch\\RoomPostBL.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAuwHIAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T15:04:15.82Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "IBaseBL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\BaseBL\\IBaseBL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.BL\\BaseBL\\IBaseBL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\BaseBL\\IBaseBL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.BL\\BaseBL\\IBaseBL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T14:57:46.621Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "BaseBL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\BaseBL\\BaseBL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.BL\\BaseBL\\BaseBL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\BaseBL\\BaseBL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.BL\\BaseBL\\BaseBL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T14:57:14.927Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "BasesController.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\BasesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BasesController.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.API\\Controllers\\BasesController.cs",
+              "RelativeToolTip": "Controllers\\BasesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T14:55:37.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "PagingItem.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Query\\PagingItem.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.Common\\Query\\PagingItem.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.Common\\Query\\PagingItem.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.Common\\Query\\PagingItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T14:38:37.802Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "BaseDL.cs",
+              "DocumentMoniker": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\BaseDL\\BaseDL.cs",
+              "RelativeDocumentMoniker": "..\\RentRoomManagement.DL\\BaseDL\\BaseDL.cs",
+              "ToolTip": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.DL\\BaseDL\\BaseDL.cs",
+              "RelativeToolTip": "..\\RentRoomManagement.DL\\BaseDL\\BaseDL.cs",
+              "ViewState": "AgIAANEAAAAAAAAAAAAYwOYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T14:38:29.625Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

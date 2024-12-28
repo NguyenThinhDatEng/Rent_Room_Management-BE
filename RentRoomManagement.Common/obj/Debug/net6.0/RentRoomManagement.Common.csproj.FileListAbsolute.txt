@@ -1,4 +1,3 @@
-C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.Common\obj\Debug\net6.0\RentRoomManagement.Common.csproj.AssemblyReference.cache
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.Common\obj\Debug\net6.0\RentRoomManagement.Common.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.Common\obj\Debug\net6.0\RentRoomManagement.Common.AssemblyInfoInputs.cache
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.Common\obj\Debug\net6.0\RentRoomManagement.Common.AssemblyInfo.cs
@@ -13,3 +12,4 @@ C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.Common\obj\Deb
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.Common\obj\Debug\net6.0\refint\RentRoomManagement.Common.dll
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.Common\obj\Debug\net6.0\RentRoomManagement.Common.pdb
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.Common\obj\Debug\net6.0\ref\RentRoomManagement.Common.dll
+C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.Common\obj\Debug\net6.0\RentRoomManagement.Common.sourcelink.json

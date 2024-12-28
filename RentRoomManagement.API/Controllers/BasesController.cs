@@ -1,24 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RentRoomManagement.BL;
-using RentRoomManagement.Common.Entitites.DTO;
+using RentRoomManagement.Common.Entitites.TDto;
 using RentRoomManagement.Common.Enums;
+using RentRoomManagement.Common.Query;
 using RentRoomManagement.Common.Resources;
 
 namespace RentRoomManagement.API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class BasesController<T> : ControllerBase
+    public class BasesController<T, TDto> : ControllerBase
     {
         #region Field
 
-        private IBaseBL<T> _baseBL;
+        private IBaseBL<T, TDto> _baseBL;
 
         #endregion
 
         #region Constructor
 
-        public BasesController(IBaseBL<T> baseBL)
+        public BasesController(IBaseBL<T, TDto> baseBL)
         {
             _baseBL = baseBL;
         }
@@ -26,6 +27,40 @@ namespace RentRoomManagement.API.Controllers
         #endregion
 
         #region Method
+        /// <summary>
+        /// API Lấy tất cả bản ghi
+        /// </summary>
+        /// <returns>Danh sách tất cả bản ghi</returns>
+        /// Author: Nguyen Van Thinh 11/11/2022
+        [HttpPost("list")]
+        public async Task<IActionResult> GetPaging([FromBody] DictionaryPagingItem pagingItem)
+        {
+            try
+            {
+                // Gọi đến Business Layer
+                var result = await _baseBL.GetPaging(pagingItem);
+                // Thành công
+                if (result != null)
+                    return StatusCode(StatusCodes.Status200OK, result);
+                // Thất bại
+                return StatusCode(StatusCodes.Status404NotFound, new ErrorResult
+                {
+                    ErrorCode = (int)QLTSErrorCode.NotFound,
+                    DevMsg = Errors.DevMsg_Not_Found,
+                    UserMsg = Errors.UserMsg_Not_Found,
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
+                {
+                    ErrorCode = (int)QLTSErrorCode.Exception,
+                    DevMsg = Errors.DevMsg_Exception,
+                    UserMsg = Errors.UserMsg_Exception,
+                    MoreInfo = new List<string> { ex.Message },
+                });
+            }
+        }
 
         /// <summary>
         /// API Lấy tất cả bản ghi
@@ -45,7 +80,7 @@ namespace RentRoomManagement.API.Controllers
                 // Thất bại
                 return StatusCode(StatusCodes.Status404NotFound, new ErrorResult
                 {
-                    ErrorCode = QLTSErrorCode.NotFound,
+                    ErrorCode = (int)QLTSErrorCode.NotFound,
                     DevMsg = Errors.DevMsg_Not_Found,
                     UserMsg = Errors.UserMsg_Not_Found,
                 });
@@ -54,7 +89,7 @@ namespace RentRoomManagement.API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
                 {
-                    ErrorCode = QLTSErrorCode.Exception,
+                    ErrorCode = (int)QLTSErrorCode.Exception,
                     DevMsg = Errors.DevMsg_Exception,
                     UserMsg = Errors.UserMsg_Exception,
                     MoreInfo = new List<string> { ex.Message },
@@ -69,12 +104,12 @@ namespace RentRoomManagement.API.Controllers
         /// <returns>Thông tin bản ghi theo ID</returns>
         /// Author: NVThinh (16/11/2022)
         [HttpGet("{recordID}")]
-        public IActionResult GetFixedAssetByID([FromRoute] Guid recordID)
+        public async Task<IActionResult> GetByID([FromRoute] Guid recordID)
         {
             try
             {
                 // Gọi đến Business Layer
-                var record = _baseBL.GetByID(recordID);
+                var record = await _baseBL.GetByID(recordID);
 
                 // Xử lý kết quả trả về
                 if (record != null)
@@ -83,7 +118,7 @@ namespace RentRoomManagement.API.Controllers
                 // Thất bại
                 return StatusCode(StatusCodes.Status404NotFound, new ErrorResult
                 {
-                    ErrorCode = QLTSErrorCode.NotFound,
+                    ErrorCode = (int)QLTSErrorCode.NotFound,
                     DevMsg = Errors.DevMsg_Not_Found,
                     UserMsg = Errors.UserMsg_Not_Found
                 });
@@ -92,7 +127,7 @@ namespace RentRoomManagement.API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
                 {
-                    ErrorCode = QLTSErrorCode.Exception,
+                    ErrorCode = (int)QLTSErrorCode.Exception,
                     DevMsg = Errors.DevMsg_Exception,
                     UserMsg = Errors.UserMsg_Exception,
                     MoreInfo = new List<string> { ex.Message },
@@ -120,7 +155,7 @@ namespace RentRoomManagement.API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
                 {
-                    ErrorCode = QLTSErrorCode.Exception,
+                    ErrorCode = (int)QLTSErrorCode.Exception,
                     DevMsg = Errors.DevMsg_Exception,
                     UserMsg = Errors.UserMsg_Exception,
                     MoreInfo = new List<string> { ex.Message },
@@ -134,10 +169,10 @@ namespace RentRoomManagement.API.Controllers
         /// </summary>
         /// Created by: NVThinh (04/09/2023)
         [HttpPost]
-        public IActionResult InsertAsync([FromBody] T entity)
+        public async Task<IActionResult> InsertAsync([FromBody] T entity)
         {
             // Gọi đến Business Layer
-            var numberOfRowAffected = _baseBL.InsertAsync(entity);
+            var numberOfRowAffected = await _baseBL.InsertSync(entity);
             // Nếu số dòng ảnh hưởng > 0 trả về code thành công
             if (numberOfRowAffected > 0)
             {
@@ -166,13 +201,12 @@ namespace RentRoomManagement.API.Controllers
                     return StatusCode(StatusCodes.Status200OK, recordIDs);
                 else
                 {
-                    if (serviceResponse.ErrorCode == QLTSErrorCode.BadRequest)
+                    if (serviceResponse.ErrorCode == (int)QLTSErrorCode.BadRequest)
                         return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult
                         {
-                            ErrorCode = QLTSErrorCode.BadRequest,
+                            ErrorCode = (int)QLTSErrorCode.BadRequest,
                             DevMsg = Errors.DevMsg_Bad_Request,
                             UserMsg = Errors.UserMsg_Bad_Request,
-                            MoreInfo = serviceResponse.Data
                         });
                     else
                     {
@@ -181,7 +215,6 @@ namespace RentRoomManagement.API.Controllers
                             ErrorCode = serviceResponse.ErrorCode,
                             DevMsg = Errors.DevMsg_Exception,
                             UserMsg = Errors.UserMsg_Exception,
-                            MoreInfo = serviceResponse.Data
                         });
                     }
                 }
@@ -190,7 +223,7 @@ namespace RentRoomManagement.API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
                 {
-                    ErrorCode = QLTSErrorCode.Exception,
+                    ErrorCode = (int)QLTSErrorCode.Exception,
                     DevMsg = Errors.DevMsg_Exception,
                     UserMsg = Errors.UserMsg_Exception,
                     MoreInfo = new List<string> { ex.Message }
@@ -243,7 +276,7 @@ namespace RentRoomManagement.API.Controllers
                     // Thất bại
                     return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult
                     {
-                        ErrorCode = QLTSErrorCode.BadRequest,
+                        ErrorCode = (int)QLTSErrorCode.BadRequest,
                         DevMsg = Errors.DevMsg_Bad_Request,
                         UserMsg = Errors.UserMsg_Fail,
                     });
@@ -252,7 +285,7 @@ namespace RentRoomManagement.API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
                 {
-                    ErrorCode = QLTSErrorCode.Exception,
+                    ErrorCode = (int)QLTSErrorCode.Exception,
                     DevMsg = Errors.DevMsg_Exception,
                     UserMsg = Errors.UserMsg_Exception,
                     MoreInfo = new List<string> { ex.Message }

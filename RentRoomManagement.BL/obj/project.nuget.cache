@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "DV70Cvm9hFdzPtA1553P7TlLCcUtPOr40LuGLaI4YrgG9mYweXv4eaJMcwMuYBLEyqRTCR++4tUo2d1x1nbtFw==",
+  "dgSpecHash": "nGVl4VmrlE8=",
   "success": true,
   "projectFilePath": "C:\\Users\\thinh\\source\\repos\\RentRoomManagement\\RentRoomManagement.BL\\RentRoomManagement.BL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thinh\\.nuget\\packages\\dapper\\2.0.151\\dapper.2.0.151.nupkg.sha512",
-    "C:\\Users\\thinh\\.nuget\\packages\\mysqlconnector\\2.2.7\\mysqlconnector.2.2.7.nupkg.sha512"
+    "C:\\Users\\thinh\\.nuget\\packages\\mysqlconnector\\2.2.7\\mysqlconnector.2.2.7.nupkg.sha512",
+    "C:\\Users\\thinh\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\thinh\\.nuget\\packages\\smartformat\\3.5.2\\smartformat.3.5.2.nupkg.sha512",
+    "C:\\Users\\thinh\\.nuget\\packages\\smartformat.extensions.newtonsoft.json\\3.5.2\\smartformat.extensions.newtonsoft.json.3.5.2.nupkg.sha512",
+    "C:\\Users\\thinh\\.nuget\\packages\\zstring\\2.6.0\\zstring.2.6.0.nupkg.sha512"
   ],
   "logs": []
 }

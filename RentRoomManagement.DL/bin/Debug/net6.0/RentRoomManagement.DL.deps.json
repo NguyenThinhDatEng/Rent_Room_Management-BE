@@ -34,7 +34,10 @@
       },
       "RentRoomManagement.Common/1.0.0": {
         "runtime": {
-          "RentRoomManagement.Common.dll": {}
+          "RentRoomManagement.Common.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

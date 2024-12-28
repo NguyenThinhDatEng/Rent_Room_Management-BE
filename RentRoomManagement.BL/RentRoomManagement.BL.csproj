@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="SmartFormat.Extensions.Newtonsoft.Json" Version="3.5.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RentRoomManagement.Common\RentRoomManagement.Common.csproj" />
     <ProjectReference Include="..\RentRoomManagement.DL\RentRoomManagement.DL.csproj" />
   </ItemGroup>

@@ -1,9 +1,18 @@
-﻿using RentRoomManagement.Common.Entitites.DTO;
+﻿using RentRoomManagement.Common.Entitites.TDto;
+using RentRoomManagement.Common.Query;
 
 namespace RentRoomManagement.DL
 {
-    public interface IBaseDL<T>
+    public interface IBaseDL<T, TDto>
     {
+        /// <summary>
+        /// Lấy dữ liệu phân trang
+        /// </summary>
+        /// <typeparam name="TT"></typeparam>
+        /// <param name="pagingItem"></param>
+        /// <returns></returns>
+        Task<PagingResult> GetPaging(IDicPagingItem pagingItem);
+
         /// <summary>
         /// Lấy thông tin toàn bộ bản ghi
         /// </summary>
@@ -17,7 +26,7 @@ namespace RentRoomManagement.DL
         /// <param name="recordID">ID bản ghi muốn lấy</param>
         /// <returns>Thông tin bản ghi theo ID</returns>
         /// Author: NVThinh (16/11/2022)
-        public T GetByID(Guid recordID);
+        Task<TDto> GetByID(Guid recordID);
 
         /// <summary>
         /// API lấy mã record mới
@@ -57,7 +66,15 @@ namespace RentRoomManagement.DL
         /// Thêm mới bản ghi
         /// </summary>
         /// Author: NVThinh (04/09/2023)
-        public int InsertAsync(T entity);
+        public int InsertSync(T entity);
+
+        /// <summary>
+        /// thêm mới bất đồng bộ
+        /// </summary>
+        /// <typeparam name="TT"></typeparam>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        Task<TT?> InsertAsync<TT>(TT entity);
 
         /// <summary>
         /// Cập nhật bản ghi

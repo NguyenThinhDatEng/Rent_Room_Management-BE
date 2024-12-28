@@ -1,0 +1,1121 @@
+[
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.Auth.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/v1/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "RentRoomManagement.Common.Param.LoginParam",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.Location.LocationController",
+    "Method": "GetAllLocations",
+    "RelativePath": "api/v1/Location",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAllRecords",
+    "RelativePath": "api/v1/Rentings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "keyWord",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "InsertAsync",
+    "RelativePath": "api/v1/Rentings",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.Dictionary.RentingEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/v1/Rentings",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.Dictionary.RentingEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetByID",
+    "RelativePath": "api/v1/Rentings/{recordID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteFixedAsset",
+    "RelativePath": "api/v1/Rentings/{recordID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteMultipleFixedAsset",
+    "RelativePath": "api/v1/Rentings/DeleteBatch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordIDs",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetPaging",
+    "RelativePath": "api/v1/Rentings/list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pagingItem",
+        "Type": "RentRoomManagement.Common.Query.DictionaryPagingItem",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RentingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetNextCode",
+    "RelativePath": "api/v1/Rentings/newCode",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.Action.RentingsController",
+    "Method": "Pay",
+    "RelativePath": "api/v1/Rentings/pay",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.Dictionary.RentingEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.Action.RentingsController",
+    "Method": "GetRentingUsers",
+    "RelativePath": "api/v1/Rentings/renting-users/{recordID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.Action.RentingsController",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/v1/Rentings/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.Dictionary.RentingEntity",
+        "IsRequired": true
+      },
+      {
+        "Name": "userIds",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAllRecords",
+    "RelativePath": "api/v1/RoomCategories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "keyWord",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "InsertAsync",
+    "RelativePath": "api/v1/RoomCategories",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/v1/RoomCategories",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetByID",
+    "RelativePath": "api/v1/RoomCategories/{recordID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteFixedAsset",
+    "RelativePath": "api/v1/RoomCategories/{recordID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteMultipleFixedAsset",
+    "RelativePath": "api/v1/RoomCategories/DeleteBatch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordIDs",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetPaging",
+    "RelativePath": "api/v1/RoomCategories/list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pagingItem",
+        "Type": "RentRoomManagement.Common.Query.DictionaryPagingItem",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.RoomCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetNextCode",
+    "RelativePath": "api/v1/RoomCategories/newCode",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoEdit, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAllRecords",
+    "RelativePath": "api/v1/RoomPosts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "keyWord",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoEdit, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "InsertAsync",
+    "RelativePath": "api/v1/RoomPosts",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoEdit",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoEdit, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/v1/RoomPosts",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoEdit",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoEdit, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetByID",
+    "RelativePath": "api/v1/RoomPosts/{recordID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoEdit, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteFixedAsset",
+    "RelativePath": "api/v1/RoomPosts/{recordID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoEdit, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteMultipleFixedAsset",
+    "RelativePath": "api/v1/RoomPosts/DeleteBatch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordIDs",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.RoomSearch.RoomPostsController",
+    "Method": "LovePost",
+    "RelativePath": "api/v1/RoomPosts/favorite-post",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "RentRoomManagement.Common.Param.FavoritePostParam",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.RoomSearch.RoomPostsController",
+    "Method": "GetPagingCustom",
+    "RelativePath": "api/v1/RoomPosts/filter-list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "RentRoomManagement.Common.Param.RoomFilterParam",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoEdit, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetPaging",
+    "RelativePath": "api/v1/RoomPosts/list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pagingItem",
+        "Type": "RentRoomManagement.Common.Query.DictionaryPagingItem",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.RoomSearch.RoomPostsController",
+    "Method": "GetFavoritePosts",
+    "RelativePath": "api/v1/RoomPosts/my-favorite-posts/{userID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.RoomSearch.RoomPostsController",
+    "Method": "GetMyPosts",
+    "RelativePath": "api/v1/RoomPosts/my-posts/{userID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoEdit, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetNextCode",
+    "RelativePath": "api/v1/RoomPosts/newCode",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.Room.RoomEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAllRecords",
+    "RelativePath": "api/v1/Rooms",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "keyWord",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.Room.RoomEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "InsertAsync",
+    "RelativePath": "api/v1/Rooms",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.Dictionary.Room.RoomEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.Room.RoomEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/v1/Rooms",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.Dictionary.Room.RoomEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.Room.RoomEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetByID",
+    "RelativePath": "api/v1/Rooms/{recordID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.Room.RoomEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteFixedAsset",
+    "RelativePath": "api/v1/Rooms/{recordID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.Room.RoomEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteMultipleFixedAsset",
+    "RelativePath": "api/v1/Rooms/DeleteBatch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordIDs",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.Room.RoomEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetPaging",
+    "RelativePath": "api/v1/Rooms/list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pagingItem",
+        "Type": "RentRoomManagement.Common.Query.DictionaryPagingItem",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.Room.RoomEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetNextCode",
+    "RelativePath": "api/v1/Rooms/newCode",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.ServiceCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAllRecords",
+    "RelativePath": "api/v1/ServiceCategories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "keyWord",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.ServiceCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "InsertAsync",
+    "RelativePath": "api/v1/ServiceCategories",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.ServiceCategoryEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.ServiceCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/v1/ServiceCategories",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.ServiceCategoryEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.ServiceCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetByID",
+    "RelativePath": "api/v1/ServiceCategories/{recordID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.ServiceCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteFixedAsset",
+    "RelativePath": "api/v1/ServiceCategories/{recordID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.ServiceCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteMultipleFixedAsset",
+    "RelativePath": "api/v1/ServiceCategories/DeleteBatch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordIDs",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.ServiceCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetPaging",
+    "RelativePath": "api/v1/ServiceCategories/list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pagingItem",
+        "Type": "RentRoomManagement.Common.Query.DictionaryPagingItem",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.ServiceCategoryEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetNextCode",
+    "RelativePath": "api/v1/ServiceCategories/newCode",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAllRecords",
+    "RelativePath": "api/v1/ServiceFee",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "keyWord",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "InsertAsync",
+    "RelativePath": "api/v1/ServiceFee",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/v1/ServiceFee",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetByID",
+    "RelativePath": "api/v1/ServiceFee/{recordID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteFixedAsset",
+    "RelativePath": "api/v1/ServiceFee/{recordID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteMultipleFixedAsset",
+    "RelativePath": "api/v1/ServiceFee/DeleteBatch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordIDs",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetPaging",
+    "RelativePath": "api/v1/ServiceFee/list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pagingItem",
+        "Type": "RentRoomManagement.Common.Query.DictionaryPagingItem",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.ServiceFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetNextCode",
+    "RelativePath": "api/v1/ServiceFee/newCode",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.UserEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAllRecords",
+    "RelativePath": "api/v1/Users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "keyWord",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.UserEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "InsertAsync",
+    "RelativePath": "api/v1/Users",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.Dictionary.UserEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.UserEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/v1/Users",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.Dictionary.UserEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.UserEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetByID",
+    "RelativePath": "api/v1/Users/{recordID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.UserEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteFixedAsset",
+    "RelativePath": "api/v1/Users/{recordID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.UserEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteMultipleFixedAsset",
+    "RelativePath": "api/v1/Users/DeleteBatch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordIDs",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.UserEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetPaging",
+    "RelativePath": "api/v1/Users/list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pagingItem",
+        "Type": "RentRoomManagement.Common.Query.DictionaryPagingItem",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.UserEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.RoomSearch.RoomPost.RoomPostDtoClient, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetNextCode",
+    "RelativePath": "api/v1/Users/newCode",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAllRecords",
+    "RelativePath": "api/v1/VehicleFee",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "keyWord",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "InsertAsync",
+    "RelativePath": "api/v1/VehicleFee",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/v1/VehicleFee",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetByID",
+    "RelativePath": "api/v1/VehicleFee/{recordID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteFixedAsset",
+    "RelativePath": "api/v1/VehicleFee/{recordID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordID",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "DeleteMultipleFixedAsset",
+    "RelativePath": "api/v1/VehicleFee/DeleteBatch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recordIDs",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetPaging",
+    "RelativePath": "api/v1/VehicleFee/list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pagingItem",
+        "Type": "RentRoomManagement.Common.Query.DictionaryPagingItem",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entitites.Dictionary.VehicleFeeEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetNextCode",
+    "RelativePath": "api/v1/VehicleFee/newCode",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

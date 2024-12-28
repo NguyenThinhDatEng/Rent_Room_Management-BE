@@ -10,8 +10,9 @@ C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\bin\Debug\n
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\bin\Debug\net6.0\RentRoomManagement.DL.dll
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\bin\Debug\net6.0\RentRoomManagement.Common.pdb
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\bin\Debug\net6.0\RentRoomManagement.DL.pdb
-C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.csproj.CopyComplete
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.dll
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\refint\RentRoomManagement.BL.dll
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.pdb
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\ref\RentRoomManagement.BL.dll
+C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.sourcelink.json
+C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoom.EEAEA8EC.Up2Date

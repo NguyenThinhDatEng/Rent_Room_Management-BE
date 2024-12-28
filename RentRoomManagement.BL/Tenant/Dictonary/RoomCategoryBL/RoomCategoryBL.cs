@@ -1,9 +1,10 @@
-﻿using RentRoomManagement.Common.Entitites;
+﻿using RentRoomManagement.Common.Entitites.Dictionary;
+using RentRoomManagement.Common.Entitites.RoomSearch.RoomPost;
 using RentRoomManagement.DL.Tenant.Dictionary.RoomCategoryDL;
 
 namespace RentRoomManagement.BL.Tenant.Dictonary.RoomCategoryBL
 {
-    public class RoomCategoryBL : BaseBL<RoomCategoryEntity>, IRoomCategoryBL
+    public class RoomCategoryBL : BaseBL<RoomCategoryEntity, RoomCategoryEntity>, IRoomCategoryBL
     {
         #region Field
 

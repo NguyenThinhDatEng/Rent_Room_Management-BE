@@ -1,14 +1,17 @@
-﻿using RentRoomManagement.Common.Entitites.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RentRoomManagement.Common.Entitites.TDto;
+using RentRoomManagement.Common.Query;
 
 namespace RentRoomManagement.BL
 {
-    public interface IBaseBL<T>
+    public interface IBaseBL<T, TDto>
     {
+        /// <summary>
+        /// Lấy dữ liệu phân trang
+        /// </summary>
+        /// <param name="pagingItem"></param>
+        /// <returns></returns>
+        Task<PagingResult> GetPaging(DictionaryPagingItem pagingItem);
+
         /// <summary>
         /// Lấy thông tin toàn bộ bản ghi
         /// </summary>
@@ -22,7 +25,7 @@ namespace RentRoomManagement.BL
         /// <param name="recordID">ID bản ghi muốn lấy</param>
         /// <returns>Thông tin bản ghi theo ID</returns>
         /// Author: NVThinh (16/11/2022)
-        public T GetByID(Guid recordID);
+        Task<TDto> GetByID(Guid recordID);
 
         /// <summary>
         /// API lấy mã record mới
@@ -56,12 +59,14 @@ namespace RentRoomManagement.BL
         /// Author: NVThinh (21/11/2022)
         public bool CheckDuplicateCode(string recordCode, Guid recordID, string idType);
 
+        Task<TT?> InsertAsync<TT>(TT entity);
+
         /// <summary>
         /// Thêm mới bản ghi
         /// </summary>
         /// Return: Số bản ghi bị ảnh hưởng
         /// Author: NVThinh (04/09/2023)
-        public int InsertAsync(T entity);
+        Task<int> InsertSync(T entity);
 
         /// <summary>
         /// Cập nhật bản ghi

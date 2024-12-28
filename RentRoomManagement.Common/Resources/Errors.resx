@@ -150,7 +150,7 @@
     <comment>Kiểm tra mã trùng</comment>
   </data>
   <data name="UserMsg_Exception" xml:space="preserve">
-    <value>Vui lòng liên hệ MISA</value>
+    <value>Vui lòng liên hệ Admin</value>
     <comment>Trả về cho người dùng khi có lỗi trong server</comment>
   </data>
   <data name="UserMsg_Fail" xml:space="preserve">
@@ -160,6 +160,9 @@
   <data name="UserMsg_Fail_Delelte_Batch" xml:space="preserve">
     <value>Xóa nhiều bản ghi thất bại</value>
     <comment>Lỗi xảy ra khi 1 hoặc nhiều ID bản ghi không có trong database</comment>
+  </data>
+  <data name="UserMsg_Fail_Execution" xml:space="preserve">
+    <value>Thực thi không thành công</value>
   </data>
   <data name="UserMsg_Fixed_Asset_Category_Code" xml:space="preserve">
     <value>Mã loại tài sản phải có tiền tố là AC, số tăng dần bắt đầu từ 001</value>

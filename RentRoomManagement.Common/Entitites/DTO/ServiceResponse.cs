@@ -1,27 +1,27 @@
 ﻿using RentRoomManagement.Common.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RentRoomManagement.Common.Entitites.DTO
+namespace RentRoomManagement.Common.Entitites.TDto
 {
     public class ServiceResponse
     {
         /// <summary>
         /// Kết quả thành công hay thất bại
         /// </summary>
-        public Boolean Success { get; set; }
+        public bool Success { get; set; } = true;
 
         /// <summary>
         /// Mã lỗi
         /// </summary>
-        public QLTSErrorCode ErrorCode { get; set; }
+        public int ErrorCode { get; set; }
+
+        /// <summary>
+        /// Tên lỗi
+        /// </summary>
+        public string ErrorMessage { get; set; }
 
         /// <summary>
         /// Dữ liệu phản hồi
         /// </summary>
-        public List<string> Data { get; set; }
+        public object Data { get; set; }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using RentRoomManagement.BL;
 using RentRoomManagement.BL.Tenant.Dictonary.ServiceCategoryBL;
 using RentRoomManagement.Common.Entitites;
+using RentRoomManagement.Common.Entitites.RoomSearch.RoomPost;
 
 namespace RentRoomManagement.API.Controllers.Dictionary
 {
-    public class ServiceCategoriesController : BasesController<ServiceCategoryEntity>
+    public class ServiceCategoriesController : BasesController<ServiceCategoryEntity, RoomPostDtoClient>
     {
         #region Field
 

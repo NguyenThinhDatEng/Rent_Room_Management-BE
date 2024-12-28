@@ -1,4 +1,4 @@
-﻿namespace RentRoomManagement.Common.Entitites.DTO
+﻿namespace RentRoomManagement.Common.Entitites.TDto
 {
     public class EntityKey
     {

@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentRoomManagement.Common.Entitites.DTO
+namespace RentRoomManagement.Common.Entitites.TDto
 {
     public class ErrorResult
     {
         /// <summary>
         /// Mã lỗi
         /// </summary>
-        public QLTSErrorCode ErrorCode { get; set; }
+        public int ErrorCode { get; set; }
 
         /// <summary>
         /// Message trả về cho developer

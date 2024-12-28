@@ -1,9 +1,9 @@
-﻿using RentRoomManagement.Common.Entitites.Action;
-using RentRoomManagement.Common.Entitites.Dictionary;
+﻿using RentRoomManagement.Common.Entitites.Dictionary;
+using RentRoomManagement.Common.Entitites.RoomSearch.RoomPost;
 
 namespace RentRoomManagement.BL.Tenant.Action
 {
-    public interface IRentingBL : IBaseBL<RentingEntity>
+    public interface IRentingBL : IBaseBL<RentingEntity, RentingEntity>
     {
         /// <summary>
         /// Lấy tất cả khách hàng thuê liên quan đến 1 phòng

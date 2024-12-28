@@ -1,19 +1,23 @@
-﻿using RentRoomManagement.Common.Entitites.DTO;
+﻿using RentRoomManagement.Common.Entitites.TDto;
+using RentRoomManagement.Common.Enums;
+using RentRoomManagement.Common.Query;
 using RentRoomManagement.DL;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace RentRoomManagement.BL
 {
-    public class BaseBL<T> : IBaseBL<T>
+    public class BaseBL<T, TDto> : IBaseBL<T, TDto>
     {
         #region Field
 
-        private IBaseDL<T> _baseDL;
+        private IBaseDL<T, TDto> _baseDL;
 
         #endregion
 
         #region Constructor
 
-        public BaseBL(IBaseDL<T> baseDL)
+        public BaseBL(IBaseDL<T, TDto> baseDL)
         {
             _baseDL = baseDL;
         }
@@ -23,6 +27,29 @@ namespace RentRoomManagement.BL
         #region Method
 
         #region Get
+        /// <summary>
+        /// Lấy dữ liệu phân trang
+        /// </summary>
+        /// <param name="pagingItem"></param>
+        /// <returns></returns>
+        public virtual async Task<PagingResult> GetPaging(DictionaryPagingItem pagingItem)
+        {
+            if (pagingItem.SearchItem != null && !string.IsNullOrEmpty(pagingItem.SearchItem.Value))
+            {
+                var searchVal = pagingItem.SearchItem.Value;
+                pagingItem.SearchItem.Columns.ForEach(x =>
+                {
+                    pagingItem.Filters.Add(new FilterItem()
+                    {
+                        Field = x,
+                        Operator = FilterOperator.Contains,
+                        Value = searchVal
+                    });
+                });
+            }
+            return await _baseDL.GetPaging(pagingItem);
+        }
+
         /// <summary>
         /// Lấy thông tin toàn bộ bản ghi
         /// </summary>
@@ -38,10 +65,9 @@ namespace RentRoomManagement.BL
         /// </summary>
         /// <param name="recordID">ID bản ghi muốn lấy</param>
         /// <returns>Thông tin bản ghi theo ID</returns>
-        /// Author: NVThinh (16/11/2022)
-        public T GetByID(Guid recordID)
+        public virtual async Task<TDto> GetByID(Guid recordID)
         {
-            return _baseDL.GetByID(recordID);
+            return await _baseDL.GetByID(recordID);
         }
 
         /// <summary>
@@ -60,16 +86,80 @@ namespace RentRoomManagement.BL
         /// Thêm mới bản ghi
         /// </summary>
         /// Return: Số bản ghi bị ảnh hưởng
-        /// Author: NVThinh (04/09/2023)
-        public int InsertAsync(T entity)
+        public async Task<TT?> InsertAsync<TT>(TT entity)
         {
             BeforeInsert(entity);
 
-            return _baseDL.InsertAsync(entity);
+            return await _baseDL.InsertAsync(entity);
         }
 
-        protected void BeforeInsert(T entity) { }
+        /// <summary>
+        /// Thêm mới bản ghi
+        /// </summary>
+        /// Return: Số bản ghi bị ảnh hưởng
+        public async Task<int> InsertSync(T entity)
+        {
+            BeforeInsert(entity);
 
+            var newEntity = _baseDL.InsertSync(entity);
+
+            await AfterInsertSync(entity);
+
+            return newEntity;
+        }
+
+        protected void BeforeInsert<TT>(TT entity) {
+            EnsureKeyValue(entity);
+        }
+
+        /// <summary>
+        /// Đảm bảo khóa chính luôn có dữ liệu
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
+        public void EnsureKeyValue<TT>(TT entity)
+        {
+            // Kiểm tra xem entity có null hay không
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
+
+            // Lấy kiểu của entity
+            Type entityType = typeof(TT);
+
+            // Tìm thuộc tính được đánh dấu bằng [Key]
+            PropertyInfo keyProperty = entityType.GetProperties()
+                .FirstOrDefault(prop => prop.GetCustomAttribute<KeyAttribute>() != null);
+
+            // Kiểm tra xem thuộc tính khóa chính có tồn tại không
+            if (keyProperty == null)
+                throw new InvalidOperationException($"Không tìm thấy thuộc tính khóa chính được đánh dấu bằng [Key] trong kiểu {entityType.Name}");
+
+            // Lấy giá trị của thuộc tính khóa chính
+            var keyValue = keyProperty.GetValue(entity);
+
+            // Kiểm tra xem giá trị khóa chính có hợp lệ hay không
+            if (keyValue == null || keyValue.Equals(Activator.CreateInstance(keyProperty.PropertyType)))
+            {
+                // Gán giá trị ngẫu nhiên cho khóa chính
+                if (keyProperty.PropertyType == typeof(Guid))
+                {
+                    keyProperty.SetValue(entity, Guid.NewGuid());
+                }
+                else if (keyProperty.PropertyType == typeof(int))
+                {
+                    // Gán giá trị ngẫu nhiên cho kiểu int (ví dụ từ 1 đến 10000)
+                    Random random = new Random();
+                    keyProperty.SetValue(entity, random.Next(1, 10001));
+                }
+                else
+                {
+                    throw new InvalidOperationException($"Không hỗ trợ kiểu khóa chính: {keyProperty.PropertyType.Name}");
+                }
+            }
+        }
+
+        protected virtual async Task AfterInsertSync(T entity) {}
         #endregion
 
         #region Update

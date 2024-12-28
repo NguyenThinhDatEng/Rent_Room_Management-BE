@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "pyfAcNjZMfSKvJXndUwQs4Sd//HY4MrkdqMY8GTRZdI=",
+  "Hash": "Xg/OcMjglahmTDrosCCNIaPDQb9Db3KK7LDputo6zPU=",
   "Source": "RentRoomManagement.API",
   "BasePath": "_content/RentRoomManagement.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RentRoomManagement.BL.Tenant.Action;
-using RentRoomManagement.Common.Entitites.Action;
-using RentRoomManagement.Common.Entitites.DTO;
+using RentRoomManagement.Common.Entitites.Dictionary;
+using RentRoomManagement.Common.Entitites.TDto;
 using RentRoomManagement.Common.Enums;
 using RentRoomManagement.Common.Resources;
 
 namespace RentRoomManagement.API.Controllers.Action
 {
-    public class RentingsController : BasesController<RentingEntity>
+    public class RentingsController : BasesController<RentingEntity, RentingEntity>
     {
         #region Field
 
@@ -43,7 +43,7 @@ namespace RentRoomManagement.API.Controllers.Action
                 // Thất bại
                 return StatusCode(StatusCodes.Status404NotFound, new ErrorResult
                 {
-                    ErrorCode = QLTSErrorCode.NotFound,
+                    ErrorCode = (int)QLTSErrorCode.NotFound,
                     DevMsg = Errors.DevMsg_Not_Found,
                     UserMsg = Errors.UserMsg_Not_Found,
                 });
@@ -52,7 +52,7 @@ namespace RentRoomManagement.API.Controllers.Action
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
                 {
-                    ErrorCode = QLTSErrorCode.Exception,
+                    ErrorCode = (int)QLTSErrorCode.Exception,
                     DevMsg = Errors.DevMsg_Exception,
                     UserMsg = Errors.UserMsg_Exception,
                     MoreInfo = new List<string> { ex.Message },

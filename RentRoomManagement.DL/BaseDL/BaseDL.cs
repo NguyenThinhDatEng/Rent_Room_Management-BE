@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using RentRoomManagement.Common.Constants;
-using RentRoomManagement.Common.Entitites.DTO;
+using RentRoomManagement.Common.Entitites.TDto;
 using RentRoomManagement.Common.Enums;
 using RentRoomManagement.Common.Resources;
 using MySqlConnector;
@@ -8,19 +8,23 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations.Schema;
 using static Dapper.SqlMapper;
+using System.Data;
+using RentRoomManagement.Common.Query;
+using System.Text;
 
 namespace RentRoomManagement.DL
 {
-    public class BaseDL<T> : IBaseDL<T>
+    public class BaseDL<T, TDto> : IBaseDL<T, TDto>
     {
         #region Fields
-        private string _tableName = TableNameMapper(typeof(T));
+        private string _tableName = TableNameMapper<T>();
         private static EntityKey _entityKey = new EntityKey();
         #endregion
 
         #region Method
-        private static string TableNameMapper(Type type)
+        public static string TableNameMapper<TT>()
         {
+            var type = typeof(TT);
             TableAttribute tableAttribute = (TableAttribute)Attribute.GetCustomAttribute(type, typeof(TableAttribute));
             var name = string.Empty;
 
@@ -32,9 +36,9 @@ namespace RentRoomManagement.DL
             return name;
         }
 
-        private static void KeyMapper(T? entity)
+        private static void KeyMapper<TT>(TT entity)
         {
-            Type dataType = typeof(T);
+            var dataType = typeof(TT);
             var properties = dataType.GetProperties();
             // Tìm ra khóa của bảng
             foreach (var property in properties)
@@ -60,9 +64,9 @@ namespace RentRoomManagement.DL
             }
         }
 
-        private static string KeyNameMapper()
+        private static string KeyNameMapper<TT>()
         {
-            Type dataType = typeof(T);
+            Type dataType = typeof(TT);
             var properties = dataType.GetProperties();
             // Tìm ra khóa của bảng
             foreach (var property in properties)
@@ -80,11 +84,10 @@ namespace RentRoomManagement.DL
             return "";
         }
 
-        private string GetColumnNames()
+        private string GetColumnNames<TT>()
         {
-            Type dataType = typeof(T);
+            var dataType = typeof(TT);
             var properties = dataType.GetProperties();
-
             string columnNames = string.Join(", ", properties.Select(p => p.Name));
             return columnNames;
         }
@@ -98,18 +101,17 @@ namespace RentRoomManagement.DL
             return columnValues;
         }
 
-        private string GetParameterNames()
+        private string GetParameterNames<TT>()
         {
-            Type dataType = typeof(T);
+            Type dataType = typeof(TT);
             var properties = dataType.GetProperties();
-
             string parameterNames = string.Join(", ", properties.Select(p => "@" + p.Name));
             return parameterNames;
         }
 
-        private void AddParameters(MySqlCommand command, T data)
+        private void AddParameters<TT>(MySqlCommand command, TT data)
         {
-            Type dataType = typeof(T);
+            Type dataType = typeof(TT);
             var properties = dataType.GetProperties();
 
             foreach (var property in properties)
@@ -119,7 +121,194 @@ namespace RentRoomManagement.DL
             }
         }
 
+        /// <summary>
+        /// Xử lý tên cột trước khi build query
+        /// </summary>
+        /// <param name="columnName"></param>
+        public static string SanitizeColumn(string columnName)
+        {
+            // Chỉ chấp nhận chữ cái, chữ số và dấu gạch dưới
+            string safeCol = new string(columnName.Where(c => char.IsLetterOrDigit(c) || c == '_').ToArray());
+            return safeCol;
+        }
+
+        private string BuildWhereClause(List<FilterItem> filters, bool isAndOperator = true)
+        {
+            if (filters == null || filters.Count == 0)
+            {
+                return "";
+            }
+
+            List<string> conditions = new List<string>();
+            foreach (var filter in filters)
+            {
+                string condition = "";
+                switch (filter.Operator)
+                {
+                    case FilterOperator.Equal:
+                        condition = $"{filter.Field} = '{filter.Value}'";
+                        break;
+                    case FilterOperator.NotEqual:
+                        condition = $"{filter.Field} <> '{filter.Value}'";
+                        break;
+                    case FilterOperator.GreaterThan:
+                        condition = $"{filter.Field} > '{filter.Value}'";
+                        break;
+                    case FilterOperator.LessThan:
+                        condition = $"{filter.Field} < '{filter.Value}'";
+                        break;
+                    case FilterOperator.Contains:
+                        condition = $"{filter.Field} LIKE '%{filter.Value}%'";
+                        break;
+                    case FilterOperator.IN:
+                        Type filterValType = filter.Value.GetType();
+                        if (filterValType.IsGenericType && filterValType.GetGenericTypeDefinition() == typeof(List<>))
+                        {
+                            var genericType = filterValType.GetGenericArguments()[0];
+                            var filterVals = new List<string>();
+                            if (genericType == typeof(Guid))
+                            {
+                                var list = filter.Value as List<Guid>;
+                                filterVals = list?.Select(x => $"'{x.ToString()}'").ToList();
+                            } else if (genericType == typeof(int))
+                            {
+                                var list = filter.Value as List<int>;
+                                filterVals = list?.Select(x => $"'{x.ToString()}'").ToList();
+                            } else
+                            {
+                                var list = filter.Value as List<string>;
+                                filterVals = list?.Select(x => $"'{x}'").ToList();
+                            }
+
+                            filter.Value = string.Join(",", filterVals);
+                        }
+
+                        condition = $"{filter.Field} IN ({filter.Value})";
+                        break;
+                    default:
+                        // Handle other operators if needed
+                        break;
+                }
+
+                conditions.Add(condition);
+            }
+
+            string logicalOperator = isAndOperator ? "AND" : "OR";
+            return "WHERE " + string.Join($" {logicalOperator} ", conditions);
+        }
+
+        /// <summary>
+        /// Build sort
+        /// </summary>
+        private string BuildSortClause(List<SortItem> sortItems)
+        {
+            StringBuilder orderByClause = new StringBuilder();
+
+            foreach (var sortItem in sortItems)
+            {
+                string safeColumnName = SanitizeColumn(sortItem.Column);
+                string orderBy = $"{safeColumnName} {(sortItem.IsAscending ? "ASC" : "DESC")}";
+                orderByClause.Append(orderBy).Append(", ");
+            }
+
+            // Xóa dấu phẩy cuối cùng nếu có
+            if (orderByClause.Length > 0)
+            {
+                orderByClause.Length -= 2;
+            }
+
+            return $"ORDER BY {orderByClause.ToString()}";
+        }
+
         #region GET
+        /// <summary>
+        /// Lấy dữ liệu phân trang
+        /// </summary>
+        /// <typeparam name="TT"></typeparam>
+        /// <param name="pagingItem"></param>
+        /// <returns></returns>
+        public async Task<PagingResult> GetPaging(IDicPagingItem pagingItem)
+        {
+            MySqlConnection connection = new MySqlConnection(DatabaseContext.ConnectionString);
+            await connection.OpenAsync();
+
+            // Columns
+            string columnsStr = "*";
+            if (pagingItem.Columns?.Count > 0)
+            {
+                columnsStr = string.Join(", ", pagingItem.Columns);
+            }
+
+            // Conditions
+            string whereClause = "";
+            if (pagingItem.Filters != null && pagingItem.Filters.Any())
+            {
+                whereClause = BuildWhereClause(pagingItem.Filters, !pagingItem.IsOr);
+            }
+
+            // sort
+            string sortClause = "";
+            if (pagingItem.Sorts != null && pagingItem.Sorts.Any())
+            {
+                sortClause = BuildSortClause(pagingItem.Sorts);
+            }
+
+            var tableName = TableNameMapper<TDto>();
+            string query = $"SELECT {columnsStr} " +
+                $"FROM {tableName} " +
+                $"{whereClause} " +
+                $"{sortClause} " +
+                $"LIMIT {pagingItem.Skip}, {pagingItem.Take};";
+
+            var mainTableName = TableNameMapper<T>();
+            string countQuery = $"SELECT COUNT(*) FROM {mainTableName} {whereClause};";
+
+            var result = new PagingResult();
+            result.Data = await connection.QueryAsync<TDto>(query);
+            result.TotalCount = await connection.QueryFirstAsync<int>(countQuery);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Lấy dữ liệu phân trang
+        /// </summary>
+        /// <typeparam name="TT"></typeparam>
+        /// <param name="pagingItem"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<TT>> GetAll<TT>(PagingItem pagingItem)
+        {
+            MySqlConnection connection = new MySqlConnection(DatabaseContext.ConnectionString);
+            await connection.OpenAsync();
+
+            // Columns
+            string columnsStr = "*";
+            if (pagingItem.Columns?.Count > 0)
+            {
+                columnsStr = string.Join(", ", pagingItem.Columns);
+            }
+
+            // Conditions
+            string whereClause = "";
+            if (pagingItem.Filters != null)
+            {
+                whereClause = BuildWhereClause(pagingItem.Filters);
+            }
+
+            // sort
+            string sortClause = "";
+            if (pagingItem.Sorts != null && pagingItem.Sorts.Any())
+            {
+                sortClause = BuildSortClause(pagingItem.Sorts);
+            }
+
+            var tableName = TableNameMapper<TT>();
+            string query = $"SELECT {columnsStr} FROM {tableName} " +
+                $"{whereClause} " +
+                $"{sortClause}";
+
+            return await connection.QueryAsync<TT>(query);
+        }
 
         /// <summary>
         /// Lấy thông tin toàn bộ bản ghi
@@ -155,24 +344,19 @@ namespace RentRoomManagement.DL
         /// <param name="recordID">ID bản ghi muốn lấy</param>
         /// <returns>Thông tin bản ghi theo ID</returns>
         /// Author: NVThinh (16/11/2022)
-        public T GetByID(Guid recordID)
+        public async Task<TDto> GetByID(Guid recordID)
         {
-            // Chuẩn bị câu lệnh SQL
-            string procedureName = String.Format(Procedure.GET_BY_ID, typeof(T).Name);
+            var connection = new MySqlConnection(DatabaseContext.ConnectionString);
+            await connection.OpenAsync();
 
-            //Chuẩn bị tham số đầu vào
-            var parameters = new DynamicParameters();
-            parameters.Add($"v_{typeof(T).Name}ID", recordID);
-
-            //Khởi tạo kết nối DB MySQL
-            using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
+            // Thực hiện chèn dữ liệu vào bảng
+            var sql = $"SELECT * FROM {TableNameMapper<TDto>()} WHERE {KeyNameMapper<TDto>()} = @id;";
+            var param = new Dictionary<string, object>()
             {
-                //Thực hiện gọi vào DB
-                var record = mySqlConnection.QueryFirstOrDefault<T>(procedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
-
-                //Xử lý kết quả trả về
-                return record;
-            }
+                {"id", recordID }
+            };
+            var result = await connection.QueryFirstAsync<TDto>(sql, param);
+            return result;
         }
 
         /// <summary>
@@ -219,7 +403,6 @@ namespace RentRoomManagement.DL
                 return lastCode;
             }
         }
-
         #endregion
 
         #region POST
@@ -228,7 +411,7 @@ namespace RentRoomManagement.DL
         /// </summary>
         /// Return: Trả về số bản ghi bị ảnh hưởng
         /// Author: NVThinh (04/09/2023)
-        public virtual int InsertAsync(T entity)
+        public virtual int InsertSync(T entity)
         {
             KeyMapper(entity);
             using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
@@ -236,14 +419,43 @@ namespace RentRoomManagement.DL
                 mySqlConnection.Open();
 
                 // Thực hiện chèn dữ liệu vào bảng
-                MySqlCommand command = new MySqlCommand($"INSERT INTO {_tableName} ({GetColumnNames()}) VALUES ({GetParameterNames()})", mySqlConnection);
+                MySqlCommand command = new MySqlCommand($"INSERT INTO {_tableName} ({GetColumnNames<T>()}) " +
+                    $"VALUES ({GetParameterNames<T>()})", mySqlConnection);
 
                 // Thêm các tham số vào câu truy vấn
                 AddParameters(command, entity);
 
-
                 // Thực thi câu truy vấn
                 return command.ExecuteNonQuery();
+            }
+        }
+
+        /// <summary>
+        /// Thêm mới bản ghi bất đồng bộ
+        /// </summary>
+        public async Task<TT?> InsertAsync<TT>(TT entity)
+        {
+            KeyMapper(entity);
+            using var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
+
+            await mySqlConnection.OpenAsync();
+
+            // Thực hiện chèn dữ liệu vào bảng
+            MySqlCommand command = new MySqlCommand($"INSERT INTO {TableNameMapper<TT>()} ({GetColumnNames<TT>()}) " +
+                $"VALUES ({GetParameterNames<TT>()})", mySqlConnection);
+
+            // Thêm các tham số vào câu truy vấn
+            AddParameters(command, entity);
+
+            // Thực thi câu truy vấn
+            var affectRows = command.ExecuteNonQuery();
+            if (affectRows > 0)
+            {
+                return entity;
+            }
+            else
+            {
+                return default;
             }
         }
 
@@ -288,14 +500,14 @@ namespace RentRoomManagement.DL
                     {
                         // Thực hiện thất bại, khôi phục dữ liệu
                         transaction.Rollback();
-                        return new ServiceResponse { Success = false, ErrorCode = QLTSErrorCode.BadRequest, Data = new List<string> { Errors.UserMsg_Fail_Delelte_Batch } };
+                        return new ServiceResponse { Success = false, ErrorCode = (int)QLTSErrorCode.BadRequest, Data = new List<string> { Errors.UserMsg_Fail_Delelte_Batch } };
                     }
 
                     return new ServiceResponse { Success = true };
                 }
                 catch (Exception ex)
                 {
-                    return new ServiceResponse { Success = false, Data = new List<string> { ex.Message }, ErrorCode = QLTSErrorCode.Exception };
+                    return new ServiceResponse { Success = false, Data = new List<string> { ex.Message }, ErrorCode = (int)QLTSErrorCode.Exception };
                 }
             }
         }
@@ -359,7 +571,7 @@ namespace RentRoomManagement.DL
                 mySqlConnection.Open();
 
                 // Thực hiện chèn dữ liệu vào bảng
-                MySqlCommand command = new MySqlCommand($"DELETE FROM {_tableName} WHERE {KeyNameMapper()} = @id", mySqlConnection);
+                MySqlCommand command = new MySqlCommand($"DELETE FROM {_tableName} WHERE {KeyNameMapper<T>()} = @id", mySqlConnection);
 
                 command.Parameters.AddWithValue("@id", recordID);
 

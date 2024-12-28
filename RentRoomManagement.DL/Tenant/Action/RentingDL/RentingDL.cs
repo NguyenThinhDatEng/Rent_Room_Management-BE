@@ -1,45 +1,12 @@
 ﻿using Dapper;
 using MySqlConnector;
-using RentRoomManagement.Common.Constants;
-using RentRoomManagement.Common.Entitites.Action;
 using RentRoomManagement.Common.Entitites.Dictionary;
-using RentRoomManagement.Common.Entitites.DTO;
-using RentRoomManagement.DL.Tenant.Dictionary;
 using System.Data;
 
 namespace RentRoomManagement.DL.Tenant.Action
 {
-    public class RentingDL : BaseDL<RentingEntity>, IRentingDL
+    public class RentingDL : BaseDL<RentingEntity, RentingEntity>, IRentingDL
     {
-        private BaseDL<RentingEntity> baseDL;
-
-        /// <summary>
-        /// Thêm mới bản ghi
-        /// </summary>
-        /// Return: Trả về số bản ghi bị ảnh hưởng
-        /// Author: NVThinh (15/09/2023)
-        public override int InsertAsync(RentingEntity entity)
-        {
-            // Chuẩn bị tên Stored procedure
-            string procedureName = "Proc_InsertRentingEntity";
-
-            using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
-            {
-                mySqlConnection.Open();
-
-                MySqlCommand command = new MySqlCommand(procedureName, mySqlConnection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("roomId", entity.room_id);
-                command.Parameters.AddWithValue("userId", entity.user_id);
-                command.Parameters.AddWithValue("$price", entity.price);
-                command.Parameters.AddWithValue("roomRentalDate", entity.room_rental_date);
-                command.Parameters.AddWithValue("checkOutDate", entity.check_out_date);
-                command.Parameters.AddWithValue("$deposit", entity.deposit);
-
-                return command.ExecuteNonQuery();
-            };
-        }
-
         /// <summary>
         /// API Xóa 1 bản ghi theo ID
         /// </summary>
@@ -61,37 +28,6 @@ namespace RentRoomManagement.DL.Tenant.Action
 
                 command.ExecuteNonQuery();
 
-                return 1;
-            }
-        }
-
-        /// <summary>
-        /// Cập nhật bản ghi
-        /// </summary>
-        /// Return: Trả về số bản ghi bị ảnh hưởng
-        /// Author: NVThinh (15/09/2023)
-        public int UpdateAsync(RentingEntity entity, string userIds)
-        {
-            // Chuẩn bị tên Stored procedure
-            string procedureName = "Proc_UpdateRentingEntity";
-
-            using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
-            {
-                mySqlConnection.Open();
-
-                MySqlCommand command = new MySqlCommand(procedureName, mySqlConnection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                command.Parameters.AddWithValue("rentingId", entity.renting_id);
-                command.Parameters.AddWithValue("price", entity.price);
-                command.Parameters.AddWithValue("roomRentalDate", entity.room_rental_date);
-                command.Parameters.AddWithValue("checkOutDate", entity.check_out_date);
-                command.Parameters.AddWithValue("deposit", entity.deposit);
-                command.Parameters.AddWithValue("userIds", userIds);
-
-                command.ExecuteNonQuery();
-
-                // Thực thi câu truy vấn
                 return 1;
             }
         }
@@ -141,7 +77,7 @@ namespace RentRoomManagement.DL.Tenant.Action
                 command.CommandType = CommandType.StoredProcedure;
 
                 command.Parameters.AddWithValue("rentingId", entity.renting_id);
-                command.Parameters.AddWithValue("amountPaid", entity.amount_paid);
+                command.Parameters.AddWithValue("amountPaid", entity.deposit_amount_paid);
 
                 // Thực thi câu truy vấn
                 return command.ExecuteNonQuery();

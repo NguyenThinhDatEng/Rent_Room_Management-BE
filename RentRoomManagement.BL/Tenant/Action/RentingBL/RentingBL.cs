@@ -1,11 +1,10 @@
-﻿using RentRoomManagement.Common.Entitites.Action;
-using RentRoomManagement.Common.Entitites.Dictionary;
+﻿using RentRoomManagement.Common.Entitites.Dictionary;
+using RentRoomManagement.Common.Entitites.RoomSearch.RoomPost;
 using RentRoomManagement.DL.Tenant.Action;
-using System.Text.Json;
 
 namespace RentRoomManagement.BL.Tenant.Action
 {
-    public class RentingBL : BaseBL<RentingEntity>, IRentingBL
+    public class RentingBL : BaseBL<RentingEntity, RentingEntity>, IRentingBL
     {
         private IRentingDL _rentingDL;
 
@@ -31,7 +30,7 @@ namespace RentRoomManagement.BL.Tenant.Action
         /// <returns></returns>
         public int UpdateAsync(RentingEntity entity, string userIds)
         {
-            return _rentingDL.UpdateAsync(entity, userIds);
+            return 1;
         }
 
         /// <summary>

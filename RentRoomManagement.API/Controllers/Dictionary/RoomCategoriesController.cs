@@ -1,9 +1,9 @@
-﻿using RentRoomManagement.Common.Entitites;
-using RentRoomManagement.BL.Tenant.Dictonary.RoomCategoryBL;
+﻿using RentRoomManagement.BL.Tenant.Dictonary.RoomCategoryBL;
+using RentRoomManagement.Common.Entitites.Dictionary;
 
 namespace RentRoomManagement.API.Controllers.Dictionary
 {
-    public class RoomCategoriesController : BasesController<RoomCategoryEntity>
+    public class RoomCategoriesController : BasesController<RoomCategoryEntity, RoomCategoryEntity>
     {
         #region Field
 
