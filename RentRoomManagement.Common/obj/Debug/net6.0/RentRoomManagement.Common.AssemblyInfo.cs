@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RentRoomManagement.Common")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1567eb0093f139a9be4c5bfecb38d203e6323eaf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da7aa2286ebe33d48de96a8b7804990acd380e74")]
 [assembly: System.Reflection.AssemblyProductAttribute("RentRoomManagement.Common")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RentRoomManagement.Common")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

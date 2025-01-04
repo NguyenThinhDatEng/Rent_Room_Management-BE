@@ -5,5 +5,7 @@
         public SearchItem? SearchItem { get; set; }
 
         public bool IsOr { get; set; } = true;
+
+        public List<FilterItem> OrGroup { get; set; } = new List<FilterItem>();
     }
 }

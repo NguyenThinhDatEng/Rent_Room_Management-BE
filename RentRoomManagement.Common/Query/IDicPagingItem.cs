@@ -5,5 +5,7 @@
         SearchItem? SearchItem { get; set; }
 
         bool IsOr { get; set; }
+
+        List<FilterItem> OrGroup { get; set; }
     }
 }

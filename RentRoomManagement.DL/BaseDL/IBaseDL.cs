@@ -66,7 +66,7 @@ namespace RentRoomManagement.DL
         /// Thêm mới bản ghi
         /// </summary>
         /// Author: NVThinh (04/09/2023)
-        public int InsertSync(T entity);
+        public Task<TDto?> InsertSync(T entity);
 
         /// <summary>
         /// thêm mới bất đồng bộ

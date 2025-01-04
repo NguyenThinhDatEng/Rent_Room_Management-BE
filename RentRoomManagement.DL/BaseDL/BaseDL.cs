@@ -11,6 +11,7 @@ using static Dapper.SqlMapper;
 using System.Data;
 using RentRoomManagement.Common.Query;
 using System.Text;
+using System.Reflection;
 
 namespace RentRoomManagement.DL
 {
@@ -22,6 +23,19 @@ namespace RentRoomManagement.DL
         #endregion
 
         #region Method
+        public static int GetIdValue<TT>(TT obj)
+        {
+            Type type = typeof(TT);
+            PropertyInfo propertyInfo = type.GetProperty("Id");
+
+            if (propertyInfo != null && propertyInfo.PropertyType == typeof(int))
+            {
+                object value = propertyInfo.GetValue(obj);
+                return (int)value;
+            }
+
+            return 0; // Trả về giá trị mặc định nếu không thể lấy được giá trị Id
+        }
         public static string TableNameMapper<TT>()
         {
             var type = typeof(TT);
@@ -132,14 +146,31 @@ namespace RentRoomManagement.DL
             return safeCol;
         }
 
-        private string BuildWhereClause(List<FilterItem> filters, bool isAndOperator = true)
+        private string BuildWhereClause(List<FilterItem> filters, List<FilterItem>? orGroup = null)
         {
             if (filters == null || filters.Count == 0)
             {
                 return "";
             }
 
+            List<string> andConditions = BuildCondition(filters);
+            List<string> orConditions = BuildCondition(orGroup);
+            
+            var andCondition = $"({string.Join($" AND ", andConditions)})";
+            var conditionStr = andCondition;
+            if (orGroup?.Count > 0)
+            {
+                var orCondition = $"({string.Join($" OR ", orConditions)})";
+                conditionStr = $"{conditionStr} AND {orCondition}";
+            }
+
+            return $"WHERE {conditionStr}";
+        }
+
+        private List<string> BuildCondition(List<FilterItem> filters)
+        {
             List<string> conditions = new List<string>();
+
             foreach (var filter in filters)
             {
                 string condition = "";
@@ -170,11 +201,13 @@ namespace RentRoomManagement.DL
                             {
                                 var list = filter.Value as List<Guid>;
                                 filterVals = list?.Select(x => $"'{x.ToString()}'").ToList();
-                            } else if (genericType == typeof(int))
+                            }
+                            else if (genericType == typeof(int))
                             {
                                 var list = filter.Value as List<int>;
                                 filterVals = list?.Select(x => $"'{x.ToString()}'").ToList();
-                            } else
+                            }
+                            else
                             {
                                 var list = filter.Value as List<string>;
                                 filterVals = list?.Select(x => $"'{x}'").ToList();
@@ -193,8 +226,7 @@ namespace RentRoomManagement.DL
                 conditions.Add(condition);
             }
 
-            string logicalOperator = isAndOperator ? "AND" : "OR";
-            return "WHERE " + string.Join($" {logicalOperator} ", conditions);
+            return conditions;
         }
 
         /// <summary>
@@ -243,7 +275,7 @@ namespace RentRoomManagement.DL
             string whereClause = "";
             if (pagingItem.Filters != null && pagingItem.Filters.Any())
             {
-                whereClause = BuildWhereClause(pagingItem.Filters, !pagingItem.IsOr);
+                whereClause = BuildWhereClause(pagingItem.Filters, pagingItem.OrGroup);
             }
 
             // sort
@@ -253,18 +285,17 @@ namespace RentRoomManagement.DL
                 sortClause = BuildSortClause(pagingItem.Sorts);
             }
 
+            var result = new PagingResult();
+
             var tableName = TableNameMapper<TDto>();
             string query = $"SELECT {columnsStr} " +
                 $"FROM {tableName} " +
                 $"{whereClause} " +
                 $"{sortClause} " +
                 $"LIMIT {pagingItem.Skip}, {pagingItem.Take};";
-
-            var mainTableName = TableNameMapper<T>();
-            string countQuery = $"SELECT COUNT(*) FROM {mainTableName} {whereClause};";
-
-            var result = new PagingResult();
             result.Data = await connection.QueryAsync<TDto>(query);
+
+            string countQuery = $"SELECT COUNT(*) FROM {tableName} {whereClause}";
             result.TotalCount = await connection.QueryFirstAsync<int>(countQuery);
 
             return result;
@@ -411,7 +442,7 @@ namespace RentRoomManagement.DL
         /// </summary>
         /// Return: Trả về số bản ghi bị ảnh hưởng
         /// Author: NVThinh (04/09/2023)
-        public virtual int InsertSync(T entity)
+        public virtual async Task<TDto?> InsertSync(T entity)
         {
             KeyMapper(entity);
             using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
@@ -426,7 +457,16 @@ namespace RentRoomManagement.DL
                 AddParameters(command, entity);
 
                 // Thực thi câu truy vấn
-                return command.ExecuteNonQuery();
+                var newID = command.ExecuteScalar();
+                if (newID != null)
+                {
+                    var newEntity = await GetByID((Guid)newID);
+                    return newEntity;
+                }
+                else
+                {
+                    return default;
+                }
             }
         }
 
@@ -448,8 +488,8 @@ namespace RentRoomManagement.DL
             AddParameters(command, entity);
 
             // Thực thi câu truy vấn
-            var affectRows = command.ExecuteNonQuery();
-            if (affectRows > 0)
+            var newID = command.ExecuteScalar();
+            if (newID != null)
             {
                 return entity;
             }

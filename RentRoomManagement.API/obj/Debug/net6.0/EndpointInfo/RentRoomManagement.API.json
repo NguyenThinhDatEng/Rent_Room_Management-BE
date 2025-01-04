@@ -36,116 +36,10 @@
         }
       }
     },
-    "/api/v1/Location": {
-      "get": {
-        "tags": [
-          "Location"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/v1/Rentings/renting-users/{recordID}": {
-      "get": {
-        "tags": [
-          "Rentings"
-        ],
-        "parameters": [
-          {
-            "name": "recordId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/v1/Rentings/update": {
-      "put": {
-        "tags": [
-          "Rentings"
-        ],
-        "parameters": [
-          {
-            "name": "userIds",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RentingEntity"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RentingEntity"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/RentingEntity"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/v1/Rentings/pay": {
+    "/api/v1/Buildings/list": {
       "post": {
         "tags": [
-          "Rentings"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RentingEntity"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RentingEntity"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/RentingEntity"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/v1/Rentings/list": {
-      "post": {
-        "tags": [
-          "Rentings"
+          "Buildings"
         ],
         "requestBody": {
           "content": {
@@ -173,10 +67,10 @@
         }
       }
     },
-    "/api/v1/Rentings": {
+    "/api/v1/Buildings": {
       "get": {
         "tags": [
-          "Rentings"
+          "Buildings"
         ],
         "parameters": [
           {
@@ -195,23 +89,23 @@
       },
       "post": {
         "tags": [
-          "Rentings"
+          "Buildings"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RentingEntity"
+                "$ref": "#/components/schemas/BuildingEntity"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RentingEntity"
+                "$ref": "#/components/schemas/BuildingEntity"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RentingEntity"
+                "$ref": "#/components/schemas/BuildingEntity"
               }
             }
           }
@@ -224,23 +118,23 @@
       },
       "put": {
         "tags": [
-          "Rentings"
+          "Buildings"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RentingEntity"
+                "$ref": "#/components/schemas/BuildingEntity"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RentingEntity"
+                "$ref": "#/components/schemas/BuildingEntity"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RentingEntity"
+                "$ref": "#/components/schemas/BuildingEntity"
               }
             }
           }
@@ -252,10 +146,10 @@
         }
       }
     },
-    "/api/v1/Rentings/{recordID}": {
+    "/api/v1/Buildings/{recordID}": {
       "get": {
         "tags": [
-          "Rentings"
+          "Buildings"
         ],
         "parameters": [
           {
@@ -276,7 +170,7 @@
       },
       "delete": {
         "tags": [
-          "Rentings"
+          "Buildings"
         ],
         "parameters": [
           {
@@ -296,10 +190,10 @@
         }
       }
     },
-    "/api/v1/Rentings/newCode": {
+    "/api/v1/Buildings/newCode": {
       "get": {
         "tags": [
-          "Rentings"
+          "Buildings"
         ],
         "responses": {
           "200": {
@@ -308,10 +202,440 @@
         }
       }
     },
-    "/api/v1/Rentings/DeleteBatch": {
+    "/api/v1/Buildings/DeleteBatch": {
       "post": {
         "tags": [
-          "Rentings"
+          "Buildings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Contracts/list": {
+      "post": {
+        "tags": [
+          "Contracts"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Contracts": {
+      "get": {
+        "tags": [
+          "Contracts"
+        ],
+        "parameters": [
+          {
+            "name": "keyWord",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Contracts"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContractEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContractEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContractEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Contracts"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContractEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContractEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContractEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Contracts/{recordID}": {
+      "get": {
+        "tags": [
+          "Contracts"
+        ],
+        "parameters": [
+          {
+            "name": "recordID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Contracts"
+        ],
+        "parameters": [
+          {
+            "name": "recordID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Contracts/newCode": {
+      "get": {
+        "tags": [
+          "Contracts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Contracts/DeleteBatch": {
+      "post": {
+        "tags": [
+          "Contracts"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Location": {
+      "get": {
+        "tags": [
+          "Location"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Residents/list": {
+      "post": {
+        "tags": [
+          "Residents"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Residents": {
+      "get": {
+        "tags": [
+          "Residents"
+        ],
+        "parameters": [
+          {
+            "name": "keyWord",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Residents"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResidentEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResidentEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResidentEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Residents"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResidentEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResidentEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResidentEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Residents/{recordID}": {
+      "get": {
+        "tags": [
+          "Residents"
+        ],
+        "parameters": [
+          {
+            "name": "recordID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Residents"
+        ],
+        "parameters": [
+          {
+            "name": "recordID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Residents/newCode": {
+      "get": {
+        "tags": [
+          "Residents"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Residents/DeleteBatch": {
+      "post": {
+        "tags": [
+          "Residents"
         ],
         "requestBody": {
           "content": {
@@ -1086,215 +1410,6 @@
         }
       }
     },
-    "/api/v1/ServiceCategories/list": {
-      "post": {
-        "tags": [
-          "ServiceCategories"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DictionaryPagingItem"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DictionaryPagingItem"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/DictionaryPagingItem"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/v1/ServiceCategories": {
-      "get": {
-        "tags": [
-          "ServiceCategories"
-        ],
-        "parameters": [
-          {
-            "name": "keyWord",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "ServiceCategories"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ServiceCategoryEntity"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ServiceCategoryEntity"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ServiceCategoryEntity"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "ServiceCategories"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ServiceCategoryEntity"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ServiceCategoryEntity"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ServiceCategoryEntity"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/v1/ServiceCategories/{recordID}": {
-      "get": {
-        "tags": [
-          "ServiceCategories"
-        ],
-        "parameters": [
-          {
-            "name": "recordID",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "ServiceCategories"
-        ],
-        "parameters": [
-          {
-            "name": "recordID",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/v1/ServiceCategories/newCode": {
-      "get": {
-        "tags": [
-          "ServiceCategories"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/v1/ServiceCategories/DeleteBatch": {
-      "post": {
-        "tags": [
-          "ServiceCategories"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "format": "uuid"
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "format": "uuid"
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "format": "uuid"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
     "/api/v1/ServiceFee/list": {
       "post": {
         "tags": [
@@ -1925,6 +2040,76 @@
   },
   "components": {
     "schemas": {
+      "BuildingEntity": {
+        "type": "object",
+        "properties": {
+          "building_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "building_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "building_address": {
+            "type": "string",
+            "nullable": true
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ContractEntity": {
+        "type": "object",
+        "properties": {
+          "contract_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "contract_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "room_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "room_price": {
+            "type": "number",
+            "format": "double"
+          },
+          "room_deposit": {
+            "type": "number",
+            "format": "double"
+          },
+          "deposit_amount_paid": {
+            "type": "number",
+            "format": "double"
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
       "DictionaryPagingItem": {
         "type": "object",
         "properties": {
@@ -1962,6 +2147,13 @@
           },
           "isOr": {
             "type": "boolean"
+          },
+          "orGroup": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FilterItem"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2029,36 +2221,46 @@
         },
         "additionalProperties": false
       },
-      "RentingEntity": {
+      "ResidentEntity": {
         "type": "object",
         "properties": {
-          "renting_id": {
+          "resident_id": {
             "type": "string",
             "format": "uuid"
           },
-          "room_id": {
+          "resident_code": {
             "type": "string",
-            "format": "uuid"
+            "nullable": true
           },
-          "room_price": {
-            "type": "number",
-            "format": "double"
+          "resident_name": {
+            "type": "string",
+            "nullable": true
           },
-          "room_deposit": {
-            "type": "number",
-            "format": "double"
+          "phone_number": {
+            "type": "string",
+            "nullable": true
           },
-          "deposit_amount_paid": {
-            "type": "number",
-            "format": "double"
+          "is_owner": {
+            "type": "boolean"
           },
-          "start_date": {
+          "identity_number": {
+            "type": "string",
+            "nullable": true
+          },
+          "resident_gender": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "resident_bod": {
             "type": "string",
             "format": "date-time"
           },
-          "check_out_date": {
+          "career": {
             "type": "string",
-            "format": "date-time"
+            "nullable": true
+          },
+          "onLeave": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -2080,15 +2282,22 @@
           },
           "room_price": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "room_area": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "no_of_bed_rooms": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
+          },
+          "building_id": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false
@@ -2129,11 +2338,8 @@
           },
           "room_category_id": {
             "type": "string",
-            "format": "uuid"
-          },
-          "resident_id": {
-            "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "nullable": true
           },
           "building_id": {
             "type": "string",
@@ -2256,39 +2462,6 @@
             "nullable": true
           },
           "value": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ServiceCategoryEntity": {
-        "type": "object",
-        "properties": {
-          "created_date": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "created_by": {
-            "type": "string",
-            "nullable": true
-          },
-          "modified_date": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "modified_by": {
-            "type": "string",
-            "nullable": true
-          },
-          "service_category_id": {
-            "type": "string",
-            "format": "uuid",
-            "nullable": true
-          },
-          "service_category_name": {
             "type": "string",
             "nullable": true
           }

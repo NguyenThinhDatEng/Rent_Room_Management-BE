@@ -39,7 +39,7 @@ namespace RentRoomManagement.BL
                 var searchVal = pagingItem.SearchItem.Value;
                 pagingItem.SearchItem.Columns.ForEach(x =>
                 {
-                    pagingItem.Filters.Add(new FilterItem()
+                    pagingItem.OrGroup.Add(new FilterItem()
                     {
                         Field = x,
                         Operator = FilterOperator.Contains,
@@ -97,18 +97,19 @@ namespace RentRoomManagement.BL
         /// Thêm mới bản ghi
         /// </summary>
         /// Return: Số bản ghi bị ảnh hưởng
-        public async Task<int> InsertSync(T entity)
+        public async Task<TDto?> InsertSync(T entity)
         {
             BeforeInsert(entity);
 
-            var newEntity = _baseDL.InsertSync(entity);
+            var newEntity = await _baseDL.InsertSync(entity);
 
             await AfterInsertSync(entity);
 
             return newEntity;
         }
 
-        protected void BeforeInsert<TT>(TT entity) {
+        protected void BeforeInsert<TT>(TT entity)
+        {
             EnsureKeyValue(entity);
         }
 
@@ -159,7 +160,7 @@ namespace RentRoomManagement.BL
             }
         }
 
-        protected virtual async Task AfterInsertSync(T entity) {}
+        protected virtual async Task AfterInsertSync(T entity) { }
         #endregion
 
         #region Update
@@ -205,7 +206,7 @@ namespace RentRoomManagement.BL
         /// Created by: NVThinh (21/11/2022)
         public bool CheckDuplicateCode(string recordCode, Guid recordID, string idType)
         {
-           return _baseDL.CheckDuplicateCode(recordCode, recordID, idType);
+            return _baseDL.CheckDuplicateCode(recordCode, recordID, idType);
         }
 
 

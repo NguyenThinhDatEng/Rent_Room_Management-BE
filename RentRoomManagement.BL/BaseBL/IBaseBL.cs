@@ -66,7 +66,7 @@ namespace RentRoomManagement.BL
         /// </summary>
         /// Return: Số bản ghi bị ảnh hưởng
         /// Author: NVThinh (04/09/2023)
-        Task<int> InsertSync(T entity);
+        Task<TDto?> InsertSync(T entity);
 
         /// <summary>
         /// Cập nhật bản ghi

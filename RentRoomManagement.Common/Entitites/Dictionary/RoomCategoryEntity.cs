@@ -10,8 +10,13 @@ namespace RentRoomManagement.Common.Entitites.Dictionary
         public Guid room_category_id { get; set; }
         public string room_category_code { get; set; }
         public string room_category_name { get; set; }
-        public decimal room_price { get; set; }
-        public short room_area { get; set; }
-        public byte no_of_bed_rooms { get; set; }
+        public decimal? room_price { get; set; }
+        public int? room_area { get; set; }
+        public int? no_of_bed_rooms { get; set; } = 1;
+
+        /// <summary>
+        /// id tòa nhà
+        /// </summary>
+        public Guid building_id { get; set; }
     }
 }

@@ -172,11 +172,11 @@ namespace RentRoomManagement.API.Controllers
         public async Task<IActionResult> InsertAsync([FromBody] T entity)
         {
             // Gọi đến Business Layer
-            var numberOfRowAffected = await _baseBL.InsertSync(entity);
+            var newEntity = await _baseBL.InsertSync(entity);
             // Nếu số dòng ảnh hưởng > 0 trả về code thành công
-            if (numberOfRowAffected > 0)
+            if (newEntity != null)
             {
-                return StatusCode(StatusCodes.Status200OK, entity);
+                return StatusCode(StatusCodes.Status200OK, newEntity);
             }
             // Nếu số dòng ảnh hưởng > 0 trả về code lỗi server
             return StatusCode(StatusCodes.Status500InternalServerError);

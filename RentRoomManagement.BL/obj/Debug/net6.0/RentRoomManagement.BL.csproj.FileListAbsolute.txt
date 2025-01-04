@@ -1,8 +1,3 @@
-C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.csproj.AssemblyReference.cache
-C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.AssemblyInfoInputs.cache
-C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.AssemblyInfo.cs
-C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.csproj.CoreCompileInputs.cache
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\bin\Debug\net6.0\RentRoomManagement.BL.deps.json
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\bin\Debug\net6.0\RentRoomManagement.BL.dll
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\bin\Debug\net6.0\RentRoomManagement.BL.pdb
@@ -10,9 +5,14 @@ C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\bin\Debug\n
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\bin\Debug\net6.0\RentRoomManagement.DL.dll
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\bin\Debug\net6.0\RentRoomManagement.Common.pdb
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\bin\Debug\net6.0\RentRoomManagement.DL.pdb
+C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.csproj.AssemblyReference.cache
+C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.AssemblyInfoInputs.cache
+C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.AssemblyInfo.cs
+C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.csproj.CoreCompileInputs.cache
+C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.sourcelink.json
+C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoom.EEAEA8EC.Up2Date
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.dll
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\refint\RentRoomManagement.BL.dll
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.pdb
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\ref\RentRoomManagement.BL.dll
-C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoomManagement.BL.sourcelink.json
-C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.BL\obj\Debug\net6.0\RentRoom.EEAEA8EC.Up2Date
