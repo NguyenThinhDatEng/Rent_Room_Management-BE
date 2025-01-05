@@ -79,7 +79,7 @@ namespace RentRoomManagement.BL.Tenant.RoomSearch
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        protected override async Task AfterInsertSync(RoomPostDtoEdit entity)
+        protected override async Task AfterInsertSync(RoomPostDtoClient entity)
         {
             if (entity.room_characteristic == null)
             {

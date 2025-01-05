@@ -19,23 +19,9 @@ namespace RentRoomManagement.DL
     {
         #region Fields
         private string _tableName = TableNameMapper<T>();
-        private static EntityKey _entityKey = new EntityKey();
         #endregion
 
         #region Method
-        public static int GetIdValue<TT>(TT obj)
-        {
-            Type type = typeof(TT);
-            PropertyInfo propertyInfo = type.GetProperty("Id");
-
-            if (propertyInfo != null && propertyInfo.PropertyType == typeof(int))
-            {
-                object value = propertyInfo.GetValue(obj);
-                return (int)value;
-            }
-
-            return 0; // Trả về giá trị mặc định nếu không thể lấy được giá trị Id
-        }
         public static string TableNameMapper<TT>()
         {
             var type = typeof(TT);
@@ -50,8 +36,9 @@ namespace RentRoomManagement.DL
             return name;
         }
 
-        private static void KeyMapper<TT>(TT entity)
+        private static EntityKey KeyMapper<TT>(TT entity)
         {
+            var result = new EntityKey();
             var dataType = typeof(TT);
             var properties = dataType.GetProperties();
             // Tìm ra khóa của bảng
@@ -63,19 +50,17 @@ namespace RentRoomManagement.DL
                     if (attribute.GetType().Name == "KeyAttribute")
                     {
                         // Lấy tên trường key
-                        _entityKey.Name = property.Name;
+                        result.Name = property.Name;
+
                         // Lấy giá trị của key
                         object propVal = property.GetValue(entity);
                         Guid uuid = new Guid(propVal.ToString());
-                        _entityKey.Value = uuid;
-                        break;
+                        result.Value = uuid;
+                        return result;
                     }
                 }
-                if (_entityKey.Name != "")
-                {
-                    break;
-                }
             }
+            return result;
         }
 
         private static string KeyNameMapper<TT>()
@@ -106,12 +91,12 @@ namespace RentRoomManagement.DL
             return columnNames;
         }
 
-        private string GetColumnValues()
+        private string GetColumnValues(string keyField)
         {
             Type dataType = typeof(T);
             var properties = dataType.GetProperties();
 
-            string columnValues = string.Join(", ", properties.Where(p => !p.Name.Equals(_entityKey.Name)).Select(p => $"{p.Name} = @{p.Name}"));
+            string columnValues = string.Join(", ", properties.Where(p => !p.Name.Equals(keyField)).Select(p => $"{p.Name} = @{p.Name}"));
             return columnValues;
         }
 
@@ -155,7 +140,7 @@ namespace RentRoomManagement.DL
 
             List<string> andConditions = BuildCondition(filters);
             List<string> orConditions = BuildCondition(orGroup);
-            
+
             var andCondition = $"({string.Join($" AND ", andConditions)})";
             var conditionStr = andCondition;
             if (orGroup?.Count > 0)
@@ -298,6 +283,8 @@ namespace RentRoomManagement.DL
             string countQuery = $"SELECT COUNT(*) FROM {tableName} {whereClause}";
             result.TotalCount = await connection.QueryFirstAsync<int>(countQuery);
 
+            await connection.CloseAsync();
+
             return result;
         }
 
@@ -337,6 +324,8 @@ namespace RentRoomManagement.DL
             string query = $"SELECT {columnsStr} FROM {tableName} " +
                 $"{whereClause} " +
                 $"{sortClause}";
+
+            await connection.CloseAsync();
 
             return await connection.QueryAsync<TT>(query);
         }
@@ -387,6 +376,9 @@ namespace RentRoomManagement.DL
                 {"id", recordID }
             };
             var result = await connection.QueryFirstAsync<TDto>(sql, param);
+
+            await connection.CloseAsync();
+
             return result;
         }
 
@@ -444,7 +436,6 @@ namespace RentRoomManagement.DL
         /// Author: NVThinh (04/09/2023)
         public virtual async Task<TDto?> InsertSync(T entity)
         {
-            KeyMapper(entity);
             using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
             {
                 mySqlConnection.Open();
@@ -457,10 +448,14 @@ namespace RentRoomManagement.DL
                 AddParameters(command, entity);
 
                 // Thực thi câu truy vấn
-                var newID = command.ExecuteScalar();
-                if (newID != null)
+                var affectRows = command.ExecuteNonQuery();
+
+                mySqlConnection.Close();
+
+                if (affectRows > 0)
                 {
-                    var newEntity = await GetByID((Guid)newID);
+                    var keyConfig = KeyMapper(entity);
+                    var newEntity = await GetByID(keyConfig.Value ?? Guid.Empty);
                     return newEntity;
                 }
                 else
@@ -475,7 +470,6 @@ namespace RentRoomManagement.DL
         /// </summary>
         public async Task<TT?> InsertAsync<TT>(TT entity)
         {
-            KeyMapper(entity);
             using var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
 
             await mySqlConnection.OpenAsync();
@@ -489,6 +483,9 @@ namespace RentRoomManagement.DL
 
             // Thực thi câu truy vấn
             var newID = command.ExecuteScalar();
+
+            await mySqlConnection.CloseAsync();
+
             if (newID != null)
             {
                 return entity;
@@ -562,30 +559,42 @@ namespace RentRoomManagement.DL
         /// Author: NVThinh (04/09/2023)
         public int UpdateAsync(T entity)
         {
-            KeyMapper(entity);
-            using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
+            var keyConfig = KeyMapper(entity);
+            var columns = GetColumnValues(keyConfig.Name ?? "");
+            try
             {
-                mySqlConnection.Open();
+                using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
+                {
+                    mySqlConnection.Open();
 
-                // Thực hiện chèn dữ liệu vào bảng
-                MySqlCommand command = new MySqlCommand($"UPDATE {_tableName} SET {GetColumnValues()} WHERE {_entityKey.Name} = @id", mySqlConnection);
+                    // Thực hiện chèn dữ liệu vào bảng
+                    MySqlCommand command = new MySqlCommand($"UPDATE {_tableName} SET {columns} WHERE {keyConfig.Name} = @id", mySqlConnection);
 
-                // Thêm các tham số vào câu truy vấn
-                AddUpdateParameters(command, entity, _entityKey.Value);
+                    // Thêm các tham số vào câu truy vấn
+                    AddUpdateParameters(command, entity, keyConfig.Value, keyConfig.Name ?? "");
 
-                // Thực thi câu truy vấn
-                return command.ExecuteNonQuery();
+                    // Thực thi câu truy vấn
+                    var res = command.ExecuteNonQuery();
+
+                    mySqlConnection.Close();
+
+                    return res;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message} with Table {_tableName} with Key {keyConfig.Name}", ex);
             }
         }
 
-        private void AddUpdateParameters(MySqlCommand command, T entity, Guid? id)
+        private void AddUpdateParameters(MySqlCommand command, T entity, Guid? id, string keyField)
         {
             Type dataType = typeof(T);
             var properties = dataType.GetProperties();
 
             foreach (var property in properties)
             {
-                if (!property.Name.Equals(_entityKey.Name))
+                if (!property.Name.Equals(keyField))
                 {
                     object value = property.GetValue(entity);
                     command.Parameters.AddWithValue("@" + property.Name, value);
@@ -616,7 +625,11 @@ namespace RentRoomManagement.DL
                 command.Parameters.AddWithValue("@id", recordID);
 
                 // Thực thi câu truy vấn
-                return command.ExecuteNonQuery();
+                var res = command.ExecuteNonQuery();
+
+                mySqlConnection.Close();
+
+                return res;
             }
         }
 

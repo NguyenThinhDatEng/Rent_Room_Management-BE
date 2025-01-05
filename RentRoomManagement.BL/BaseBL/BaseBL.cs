@@ -103,7 +103,7 @@ namespace RentRoomManagement.BL
 
             var newEntity = await _baseDL.InsertSync(entity);
 
-            await AfterInsertSync(entity);
+            await AfterInsertSync(newEntity);
 
             return newEntity;
         }
@@ -160,7 +160,7 @@ namespace RentRoomManagement.BL
             }
         }
 
-        protected virtual async Task AfterInsertSync(T entity) { }
+        protected virtual async Task AfterInsertSync(TDto entity) { }
         #endregion
 
         #region Update
