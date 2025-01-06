@@ -454,6 +454,37 @@
         }
       }
     },
+    "/api/v1/Households/list": {
+      "post": {
+        "tags": [
+          "Households"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/v1/Location": {
       "get": {
         "tags": [
@@ -2253,14 +2284,24 @@
           },
           "resident_bod": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
-          "career": {
+          "resident_career": {
             "type": "string",
             "nullable": true
           },
-          "onLeave": {
+          "on_leave": {
             "type": "boolean"
+          },
+          "room_id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "building_id": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false

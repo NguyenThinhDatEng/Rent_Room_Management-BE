@@ -9,7 +9,7 @@ namespace RentRoomManagement.Common.Enums
     /// <summary>
     /// Enum sử dụng để mô tả lỗi xảy ra khi gọi API
     /// </summary>
-    public enum QLTSErrorCode
+    public enum ErrorCode
     {
         /// <summary>
         /// Lỗi gặp exception

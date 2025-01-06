@@ -64,7 +64,7 @@ namespace RentRoomManagement.API.Controllers.RoomSearch
                 // Thất bại
                 return StatusCode(StatusCodes.Status404NotFound, new ErrorResult
                 {
-                    ErrorCode = (int)QLTSErrorCode.NotFound,
+                    ErrorCode = (int)ErrorCode.NotFound,
                     DevMsg = Errors.DevMsg_Not_Found,
                     UserMsg = Errors.UserMsg_Not_Found,
                 });
@@ -73,7 +73,7 @@ namespace RentRoomManagement.API.Controllers.RoomSearch
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
                 {
-                    ErrorCode = (int)QLTSErrorCode.Exception,
+                    ErrorCode = (int)ErrorCode.Exception,
                     DevMsg = Errors.DevMsg_Exception,
                     UserMsg = Errors.UserMsg_Exception,
                     MoreInfo = new List<string> { ex.Message },

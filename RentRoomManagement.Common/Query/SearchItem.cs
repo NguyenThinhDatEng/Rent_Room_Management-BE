@@ -4,6 +4,6 @@
     {
         public List<string> Columns { get; set; }
 
-        public string Value { get; set; }
+        public string Value { get; set; } = "";
     }
 }

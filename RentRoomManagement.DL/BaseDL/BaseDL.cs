@@ -1,17 +1,17 @@
 ﻿using Dapper;
+using MySqlConnector;
 using RentRoomManagement.Common.Constants;
 using RentRoomManagement.Common.Entitites.TDto;
 using RentRoomManagement.Common.Enums;
+using RentRoomManagement.Common.Functions;
+using RentRoomManagement.Common.Query;
 using RentRoomManagement.Common.Resources;
-using MySqlConnector;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.ComponentModel.DataAnnotations.Schema;
 using static Dapper.SqlMapper;
-using System.Data;
-using RentRoomManagement.Common.Query;
-using System.Text;
-using System.Reflection;
 
 namespace RentRoomManagement.DL
 {
@@ -131,89 +131,6 @@ namespace RentRoomManagement.DL
             return safeCol;
         }
 
-        private string BuildWhereClause(List<FilterItem> filters, List<FilterItem>? orGroup = null)
-        {
-            if (filters == null || filters.Count == 0)
-            {
-                return "";
-            }
-
-            List<string> andConditions = BuildCondition(filters);
-            List<string> orConditions = BuildCondition(orGroup);
-
-            var andCondition = $"({string.Join($" AND ", andConditions)})";
-            var conditionStr = andCondition;
-            if (orGroup?.Count > 0)
-            {
-                var orCondition = $"({string.Join($" OR ", orConditions)})";
-                conditionStr = $"{conditionStr} AND {orCondition}";
-            }
-
-            return $"WHERE {conditionStr}";
-        }
-
-        private List<string> BuildCondition(List<FilterItem> filters)
-        {
-            List<string> conditions = new List<string>();
-
-            foreach (var filter in filters)
-            {
-                string condition = "";
-                switch (filter.Operator)
-                {
-                    case FilterOperator.Equal:
-                        condition = $"{filter.Field} = '{filter.Value}'";
-                        break;
-                    case FilterOperator.NotEqual:
-                        condition = $"{filter.Field} <> '{filter.Value}'";
-                        break;
-                    case FilterOperator.GreaterThan:
-                        condition = $"{filter.Field} > '{filter.Value}'";
-                        break;
-                    case FilterOperator.LessThan:
-                        condition = $"{filter.Field} < '{filter.Value}'";
-                        break;
-                    case FilterOperator.Contains:
-                        condition = $"{filter.Field} LIKE '%{filter.Value}%'";
-                        break;
-                    case FilterOperator.IN:
-                        Type filterValType = filter.Value.GetType();
-                        if (filterValType.IsGenericType && filterValType.GetGenericTypeDefinition() == typeof(List<>))
-                        {
-                            var genericType = filterValType.GetGenericArguments()[0];
-                            var filterVals = new List<string>();
-                            if (genericType == typeof(Guid))
-                            {
-                                var list = filter.Value as List<Guid>;
-                                filterVals = list?.Select(x => $"'{x.ToString()}'").ToList();
-                            }
-                            else if (genericType == typeof(int))
-                            {
-                                var list = filter.Value as List<int>;
-                                filterVals = list?.Select(x => $"'{x.ToString()}'").ToList();
-                            }
-                            else
-                            {
-                                var list = filter.Value as List<string>;
-                                filterVals = list?.Select(x => $"'{x}'").ToList();
-                            }
-
-                            filter.Value = string.Join(",", filterVals);
-                        }
-
-                        condition = $"{filter.Field} IN ({filter.Value})";
-                        break;
-                    default:
-                        // Handle other operators if needed
-                        break;
-                }
-
-                conditions.Add(condition);
-            }
-
-            return conditions;
-        }
-
         /// <summary>
         /// Build sort
         /// </summary>
@@ -244,7 +161,7 @@ namespace RentRoomManagement.DL
         /// <typeparam name="TT"></typeparam>
         /// <param name="pagingItem"></param>
         /// <returns></returns>
-        public async Task<PagingResult> GetPaging(IDicPagingItem pagingItem)
+        public virtual async Task<PagingResult> GetPaging(IDicPagingItem pagingItem)
         {
             MySqlConnection connection = new MySqlConnection(DatabaseContext.ConnectionString);
             await connection.OpenAsync();
@@ -260,7 +177,7 @@ namespace RentRoomManagement.DL
             string whereClause = "";
             if (pagingItem.Filters != null && pagingItem.Filters.Any())
             {
-                whereClause = BuildWhereClause(pagingItem.Filters, pagingItem.OrGroup);
+                whereClause = BuildQuery.BuildWhereClause(pagingItem.Filters, pagingItem.OrGroup);
             }
 
             // sort
@@ -310,7 +227,7 @@ namespace RentRoomManagement.DL
             string whereClause = "";
             if (pagingItem.Filters != null)
             {
-                whereClause = BuildWhereClause(pagingItem.Filters);
+                whereClause = BuildQuery.BuildWhereClause(pagingItem.Filters);
             }
 
             // sort
@@ -537,14 +454,14 @@ namespace RentRoomManagement.DL
                     {
                         // Thực hiện thất bại, khôi phục dữ liệu
                         transaction.Rollback();
-                        return new ServiceResponse { Success = false, ErrorCode = (int)QLTSErrorCode.BadRequest, Data = new List<string> { Errors.UserMsg_Fail_Delelte_Batch } };
+                        return new ServiceResponse { Success = false, ErrorCode = (int)ErrorCode.BadRequest, Data = new List<string> { Errors.UserMsg_Fail_Delelte_Batch } };
                     }
 
                     return new ServiceResponse { Success = true };
                 }
                 catch (Exception ex)
                 {
-                    return new ServiceResponse { Success = false, Data = new List<string> { ex.Message }, ErrorCode = (int)QLTSErrorCode.Exception };
+                    return new ServiceResponse { Success = false, Data = new List<string> { ex.Message }, ErrorCode = (int)ErrorCode.Exception };
                 }
             }
         }
