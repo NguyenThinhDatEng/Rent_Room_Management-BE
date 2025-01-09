@@ -5,5 +5,6 @@ namespace RentRoomManagement.BL.RoomManagement
 {
     public interface IHouseholdBL : IBaseBL<HouseholdEntity, HouseholdDto>
     {
+        public Task<HouseholdDetail> GetDetail(Guid roomID);
     }
 }

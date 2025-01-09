@@ -6,5 +6,8 @@ namespace RentRoomManagement.DL.RoomManagement
 {
     public interface IHouseholdDL : IBaseDL<HouseholdEntity, HouseholdDto>
     {
+        public Task CreateHouseholdList(Guid VehicleID);
+
+        public Task<HouseholdDetail> GetDetail(Guid roomID);
     }
 }

@@ -8,8 +8,12 @@ namespace RentRoomManagement.Common.Entitites.DTO
     {
         public string room_code { get; set; }
 
+        public string room_position { get; set; }
+
         public string? resident_code { get; set; }
 
         public string? resident_name { get; set; }
+
+        public string? phone_number { get; set; }
     }
 }

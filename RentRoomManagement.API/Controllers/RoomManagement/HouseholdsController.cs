@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RentRoomManagement.BL;
 using RentRoomManagement.BL.RoomManagement;
-using RentRoomManagement.Common.Entitites.DTO;
-using RentRoomManagement.Common.Entitites.RoomManangement;
 using RentRoomManagement.Common.Entitites.TDto;
 using RentRoomManagement.Common.Enums;
 using RentRoomManagement.Common.Query;
@@ -16,15 +13,15 @@ namespace RentRoomManagement.API.Controllers
     {
         #region Field
 
-        private IBaseBL<HouseholdEntity, HouseholdDto> _baseBL;
+        private IHouseholdBL _householdBL;
 
         #endregion
 
         #region Constructor
 
-        public HouseholdsController(IHouseholdBL baseBL)
+        public HouseholdsController(IHouseholdBL householdBL)
         {
-            _baseBL = baseBL;
+            _householdBL = householdBL;
         }
 
         #endregion
@@ -39,7 +36,31 @@ namespace RentRoomManagement.API.Controllers
             try
             {
                 // Gọi đến Business Layer
-                var result = await _baseBL.GetPaging(pagingItem);
+                var result = await _householdBL.GetPaging(pagingItem);
+                return StatusCode(StatusCodes.Status200OK, result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
+                {
+                    ErrorCode = (int)ErrorCode.Exception,
+                    DevMsg = Errors.DevMsg_Exception,
+                    UserMsg = Errors.UserMsg_Exception,
+                    MoreInfo = new List<string> { ex.Message },
+                });
+            }
+        }
+
+        /// <summary>
+        /// Lấy dữ liệu chi tiết
+        /// </summary>
+        [HttpGet("{recordID}")]
+        public async Task<IActionResult> GetByID(Guid recordID)
+        {
+            try
+            {
+                // Gọi đến Business Layer
+                var result = await _householdBL.GetDetail(recordID);
                 return StatusCode(StatusCodes.Status200OK, result);
             }
             catch (Exception ex)

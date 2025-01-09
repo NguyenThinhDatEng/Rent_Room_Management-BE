@@ -211,7 +211,7 @@ namespace RentRoomManagement.DL
         /// <typeparam name="TT"></typeparam>
         /// <param name="pagingItem"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<TT>> GetAll<TT>(PagingItem pagingItem)
+        public async Task<List<TT>> GetAll<TT>(PagingItem pagingItem)
         {
             MySqlConnection connection = new MySqlConnection(DatabaseContext.ConnectionString);
             await connection.OpenAsync();
@@ -225,7 +225,7 @@ namespace RentRoomManagement.DL
 
             // Conditions
             string whereClause = "";
-            if (pagingItem.Filters != null)
+            if (pagingItem.Filters?.Count > 0)
             {
                 whereClause = BuildQuery.BuildWhereClause(pagingItem.Filters);
             }
@@ -238,13 +238,18 @@ namespace RentRoomManagement.DL
             }
 
             var tableName = TableNameMapper<TT>();
+            if (string.IsNullOrEmpty(tableName))
+            {
+                throw new Exception("Thiếu cấu hình tên bảng");
+            }
+
             string query = $"SELECT {columnsStr} FROM {tableName} " +
                 $"{whereClause} " +
                 $"{sortClause}";
 
             await connection.CloseAsync();
 
-            return await connection.QueryAsync<TT>(query);
+            return await connection.QueryAsync<TT>(query) as List<TT>;
         }
 
         /// <summary>

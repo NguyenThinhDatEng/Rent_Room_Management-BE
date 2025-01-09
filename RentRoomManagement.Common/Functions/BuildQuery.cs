@@ -25,6 +25,11 @@ namespace RentRoomManagement.Common.Functions
         {
             List<string> conditions = new List<string>();
 
+            if (filters == null)
+            {
+                return conditions;
+            }
+
             foreach (var filter in filters)
             {
                 string condition = "";
@@ -73,7 +78,7 @@ namespace RentRoomManagement.Common.Functions
                         condition = $"{filter.Field} IN ({filter.Value})";
                         break;
                     default:
-                        // Handle other operators if needed
+                        // HanBLe other operators if needed
                         break;
                 }
 
@@ -91,23 +96,28 @@ namespace RentRoomManagement.Common.Functions
         /// <returns></returns>
         public static string BuildWhereClause(List<FilterItem> filters, List<FilterItem>? orGroup = null)
         {
-            if (filters == null || filters.Count == 0)
-            {
-                return "";
-            }
+            var conditions = new List<string>();
 
             List<string> andConditions = BuildCondition(filters);
-            List<string> orConditions = BuildCondition(orGroup);
+            if (andConditions?.Count > 0) { 
+                var andConditionStr = $"({string.Join($" AND ", andConditions)})";
+                conditions.Add(andConditionStr);
+            }
 
-            var andCondition = $"({string.Join($" AND ", andConditions)})";
-            var conditionStr = andCondition;
+            List<string> orConditions = BuildCondition(orGroup);
             if (orGroup?.Count > 0)
             {
                 var orCondition = $"({string.Join($" OR ", orConditions)})";
-                conditionStr = $"{conditionStr} AND {orCondition}";
+                conditions.Add(orCondition);
             }
 
-            return $"WHERE {conditionStr}";
+            if (conditions.Count > 0)
+            {
+                return $"WHERE {string.Join("AND", conditions)}";
+            } else
+            {
+                return "";
+            }
         }
     }
 }
