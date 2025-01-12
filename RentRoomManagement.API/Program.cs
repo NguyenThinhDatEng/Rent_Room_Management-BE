@@ -1,6 +1,7 @@
 ﻿using RentContractManagement.BL.Tenant.Dictonary.ContractBL;
 using RentContractManagement.DL.Tenant.Dictionary.ContractDL;
 using RentRoomManagement.BL.RoomManagement;
+using RentRoomManagement.BL.RoomManagement.FeeBL;
 using RentRoomManagement.BL.RoomManagement.vehicleBL;
 using RentRoomManagement.BL.Tenant.Dictionary.ResidentBL;
 using RentRoomManagement.BL.Tenant.Dictionary.ServiceFeeBL;
@@ -11,6 +12,7 @@ using RentRoomManagement.BL.Tenant.Dictonary.VehicleFeeBL;
 using RentRoomManagement.BL.Tenant.RoomSearch;
 using RentRoomManagement.DL;
 using RentRoomManagement.DL.RoomManagement;
+using RentRoomManagement.DL.RoomManagement.FeeDL;
 using RentRoomManagement.DL.RoomManagement.VehicleDL;
 using RentRoomManagement.DL.RoomSearch;
 using RentRoomManagement.DL.Tenant.Dictionary.BuildingDL;
@@ -69,6 +71,9 @@ builder.Services.AddScoped<IHouseholdDL, HouseholdDL>();
 
 builder.Services.AddScoped<IVehicleDL, VehicleDL>();
 builder.Services.AddScoped<IVehicleBL, VehicleBL>();
+
+builder.Services.AddScoped<IFeeBL, FeeBL>();
+builder.Services.AddScoped<IFeeDL, FeeDL>();
 
 #region RoomSearch
 builder.Services.AddScoped<IRoomPostBL, RoomPostBL>();

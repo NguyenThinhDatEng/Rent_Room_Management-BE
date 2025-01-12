@@ -247,35 +247,31 @@ namespace RentRoomManagement.DL
                 $"{whereClause} " +
                 $"{sortClause}";
 
+            var result = await connection.QueryAsync<TT>(query) as List<TT>;
+
             await connection.CloseAsync();
 
-            return await connection.QueryAsync<TT>(query) as List<TT>;
+            return result;
         }
 
         /// <summary>
         /// Lấy thông tin toàn bộ bản ghi
         /// </summary>
         /// <returns>Danh sách bản ghi</returns>
-        /// Author: NVThinh (16/11/2022)
-        public IEnumerable<T> GetAllRecords(string? keyWord)
+        public async Task<List<TDto>> GetAllRecords()
         {
-            // Chuẩn bị tên Stored procedure
-            string procedureName = String.Format(Procedure.GET_ALL, typeof(T).Name);
-
             // Khởi tạo biến kết quả trả về
-            var records = new List<T>();
+            var records = new List<TDto>();
 
-            //Khởi tạo kết nối DB MySQL
-            using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
-            {
-                // Param truyền vào store
-                object param = new
-                {
-                    keyWord = keyWord ?? "",
-                };
-                // Thực hiện gọi vào DB để chạy stored procedure với tham số đầu vào ở trên
-                records = (List<T>)mySqlConnection.Query<T>(procedureName, commandType: System.Data.CommandType.StoredProcedure, param: param);
-            }
+            var connection = new MySqlConnection(DatabaseContext.ConnectionString);
+            await connection.OpenAsync();
+
+            // Thực hiện chèn dữ liệu vào bảng
+            var sql = $"SELECT * FROM {TableNameMapper<TDto>()}";
+
+            records = await connection.QueryAsync<TDto>(sql) as List<TDto>;
+
+            await connection.CloseAsync();
 
             return records;
         }

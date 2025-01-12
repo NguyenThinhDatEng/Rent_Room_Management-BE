@@ -21,13 +21,10 @@ namespace RentRoomManagement.BL.Tenant.RoomSearch
         /// <returns></returns>
         Task<object> LovePost(FavoritePostParam param);
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pagingItem"></param>
-        /// <returns></returns>
         Task<PagingResult> GetPagingCustom(RoomFilterParam pagingItem);
 
         Task<List<RoomPostDtoClient>> GetFavoritePosts(Guid? userID);
+
+        Task SaveLocation(RoomPostLocationEntity roomPostLocation);
     }
 }

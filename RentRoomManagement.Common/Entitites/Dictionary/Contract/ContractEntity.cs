@@ -17,7 +17,7 @@ namespace RentRoomManagement.Common.Entitites.Dictionary.Contract
 
         public decimal room_deposit { get; set; } // Tiền cọc
 
-        public decimal deposit_amount_paid { get; set; } // Số tiền cọc đã trả
+        public decimal deposit_amount_received { get; set; } // Số tiền cọc đã trả
 
         public DateTime? start_date { get; set; } // Ngày bắt đầu hợp đồng
 

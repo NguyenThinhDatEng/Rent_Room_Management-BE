@@ -68,15 +68,15 @@ namespace RentRoomManagement.API.Controllers
         /// <returns>Danh sách tất cả bản ghi</returns>
         /// Author: Nguyen Van Thinh 11/11/2022
         [HttpGet]
-        public IActionResult GetAllRecords([FromQuery] string? keyWord = null)
+        public async Task<IActionResult> GetAllRecords()
         {
             try
             {
                 // Gọi đến Business Layer
-                var fixedAssetList = _baseBL.GetAllRecords(keyWord);
+                var allItems = await _baseBL.GetAllRecords();
                 // Thành công
-                if (fixedAssetList != null)
-                    return StatusCode(StatusCodes.Status200OK, fixedAssetList);
+                if (allItems != null)
+                    return StatusCode(StatusCodes.Status200OK, allItems);
                 // Thất bại
                 return StatusCode(StatusCodes.Status404NotFound, new ErrorResult
                 {

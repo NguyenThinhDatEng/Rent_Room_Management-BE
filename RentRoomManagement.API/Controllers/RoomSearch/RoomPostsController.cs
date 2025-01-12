@@ -4,7 +4,6 @@ using RentRoomManagement.Common.Entitites.RoomSearch.RoomPost;
 using RentRoomManagement.Common.Entitites.TDto;
 using RentRoomManagement.Common.Enums;
 using RentRoomManagement.Common.Param;
-using RentRoomManagement.Common.Query;
 using RentRoomManagement.Common.Resources;
 
 namespace RentRoomManagement.API.Controllers.RoomSearch
@@ -68,6 +67,30 @@ namespace RentRoomManagement.API.Controllers.RoomSearch
                     DevMsg = Errors.DevMsg_Not_Found,
                     UserMsg = Errors.UserMsg_Not_Found,
                 });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
+                {
+                    ErrorCode = (int)ErrorCode.Exception,
+                    DevMsg = Errors.DevMsg_Exception,
+                    UserMsg = Errors.UserMsg_Exception,
+                    MoreInfo = new List<string> { ex.Message },
+                });
+            }
+        }
+
+        /// <summary>
+        /// Phân trang theo bộ lọc
+        /// </summary>
+        [HttpPost("location")]
+        public async Task<IActionResult> SaveLocation([FromBody] RoomPostLocationEntity param)
+        {
+            try
+            {
+                // Gọi đến Business Layer
+                await _roomPostBL.SaveLocation(param);
+                return StatusCode(StatusCodes.Status200OK, true);
             }
             catch (Exception ex)
             {

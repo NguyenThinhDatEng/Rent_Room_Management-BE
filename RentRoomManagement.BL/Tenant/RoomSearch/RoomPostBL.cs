@@ -104,7 +104,6 @@ namespace RentRoomManagement.BL.Tenant.RoomSearch
                     catch (Exception ex) { }
                 }
             }
-
         }
 
         /// <summary>
@@ -145,6 +144,12 @@ namespace RentRoomManagement.BL.Tenant.RoomSearch
             // Lấy dữ liệu
             var pagingResult = await base.GetPaging(pagingItem);
             return pagingResult;
+        }
+
+
+        public async Task SaveLocation(RoomPostLocationEntity roomPostLocation)
+        {
+            await InsertAsync(roomPostLocation);
         }
     }
 }

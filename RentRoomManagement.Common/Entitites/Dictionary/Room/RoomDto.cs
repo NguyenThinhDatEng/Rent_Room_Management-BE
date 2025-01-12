@@ -14,5 +14,10 @@ namespace RentRoomManagement.Common.Entitites.Dictionary.Room
         /// Loại phòng
         /// </summary>
         public string? room_category_name { get; set; }
+
+        /// <summary>
+        /// Số người thuê của phòng
+        /// </summary>
+        public int member_count { get; set; }
     }
 }

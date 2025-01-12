@@ -72,15 +72,6 @@
         "tags": [
           "Buildings"
         ],
-        "parameters": [
-          {
-            "name": "keyWord",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Success"
@@ -281,15 +272,6 @@
         "tags": [
           "Contracts"
         ],
-        "parameters": [
-          {
-            "name": "keyWord",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Success"
@@ -454,6 +436,195 @@
         }
       }
     },
+    "/api/v1/Fees/list": {
+      "post": {
+        "tags": [
+          "Fees"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Fees/fees/{buildingID}": {
+      "get": {
+        "tags": [
+          "Fees"
+        ],
+        "parameters": [
+          {
+            "name": "buildingID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Fees": {
+      "post": {
+        "tags": [
+          "Fees"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Fees"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeeEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeeEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeeEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Fees/new": {
+      "post": {
+        "tags": [
+          "Fees"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Fees/{recordID}": {
+      "delete": {
+        "tags": [
+          "Fees"
+        ],
+        "parameters": [
+          {
+            "name": "recordID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Fees"
+        ],
+        "parameters": [
+          {
+            "name": "recordID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/v1/Households/list": {
       "post": {
         "tags": [
@@ -555,15 +726,6 @@
       "get": {
         "tags": [
           "Residents"
-        ],
-        "parameters": [
-          {
-            "name": "keyWord",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "responses": {
           "200": {
@@ -764,15 +926,6 @@
       "get": {
         "tags": [
           "RoomCategories"
-        ],
-        "parameters": [
-          {
-            "name": "keyWord",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "responses": {
           "200": {
@@ -1046,6 +1199,37 @@
         }
       }
     },
+    "/api/v1/RoomPosts/location": {
+      "post": {
+        "tags": [
+          "RoomPosts"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomPostLocationEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomPostLocationEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomPostLocationEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/v1/RoomPosts/list": {
       "post": {
         "tags": [
@@ -1081,15 +1265,6 @@
       "get": {
         "tags": [
           "RoomPosts"
-        ],
-        "parameters": [
-          {
-            "name": "keyWord",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "responses": {
           "200": {
@@ -1291,15 +1466,6 @@
         "tags": [
           "Rooms"
         ],
-        "parameters": [
-          {
-            "name": "keyWord",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Success"
@@ -1499,15 +1665,6 @@
       "get": {
         "tags": [
           "ServiceFee"
-        ],
-        "parameters": [
-          {
-            "name": "keyWord",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "responses": {
           "200": {
@@ -1709,15 +1866,6 @@
         "tags": [
           "Users"
         ],
-        "parameters": [
-          {
-            "name": "keyWord",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Success"
@@ -1918,15 +2066,6 @@
         "tags": [
           "VehicleFee"
         ],
-        "parameters": [
-          {
-            "name": "keyWord",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Success"
@@ -2126,15 +2265,6 @@
       "get": {
         "tags": [
           "Vehicles"
-        ],
-        "parameters": [
-          {
-            "name": "keyWord",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "responses": {
           "200": {
@@ -2352,7 +2482,7 @@
             "type": "number",
             "format": "double"
           },
-          "deposit_amount_paid": {
+          "deposit_amount_received": {
             "type": "number",
             "format": "double"
           },
@@ -2442,6 +2572,56 @@
         },
         "additionalProperties": false
       },
+      "FeeEntity": {
+        "type": "object",
+        "properties": {
+          "fee_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "contract_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "from_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expired_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "electric_fee": {
+            "type": "number",
+            "format": "double"
+          },
+          "water_fee": {
+            "type": "number",
+            "format": "double"
+          },
+          "total_fee": {
+            "type": "number",
+            "format": "double"
+          },
+          "received_fee": {
+            "type": "number",
+            "format": "double"
+          },
+          "fee_status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
       "FilterItem": {
         "type": "object",
         "properties": {
@@ -2480,6 +2660,42 @@
           "password": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentEntity": {
+        "type": "object",
+        "properties": {
+          "payment_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "fee_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "payment_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "payment_amount": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentParam": {
+        "type": "object",
+        "properties": {
+          "roomID": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "feeID": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false
@@ -2606,9 +2822,6 @@
             "type": "integer",
             "format": "int32"
           },
-          "is_empty": {
-            "type": "boolean"
-          },
           "room_category_id": {
             "type": "string",
             "format": "uuid",
@@ -2720,6 +2933,40 @@
           "created_date": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RoomPostLocationEntity": {
+        "type": "object",
+        "properties": {
+          "room_post_location_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "province_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "district_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ward_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "street_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "house_number": {
+            "type": "string",
+            "nullable": true
+          },
+          "room_post_id": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false

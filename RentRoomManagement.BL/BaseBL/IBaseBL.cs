@@ -16,8 +16,7 @@ namespace RentRoomManagement.BL
         /// Lấy thông tin toàn bộ bản ghi
         /// </summary>
         /// <returns>Danh sách bản ghi</returns>
-        /// Author: NVThinh (16/11/2022)
-        public IEnumerable<T> GetAllRecords(string? keyWord);
+        Task<List<TDto>> GetAllRecords();
 
         /// <summary>
         /// Lấy thông tin bản ghi theo ID

@@ -54,10 +54,19 @@ namespace RentRoomManagement.BL
         /// Lấy thông tin toàn bộ bản ghi
         /// </summary>
         /// <returns>Danh sách bản ghi</returns>
-        /// Author: NVThinh (19/09/2023)
-        public IEnumerable<T> GetAllRecords(string? keyWord)
+        public async Task<List<TDto>> GetAllRecords()
         {
-            return _baseDL.GetAllRecords(keyWord);
+            var result = new List<TDto>();
+            try
+            {
+                result = await _baseDL.GetAllRecords();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            return result;
         }
 
         /// <summary>
