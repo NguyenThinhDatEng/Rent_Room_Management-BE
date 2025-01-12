@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentRoomManagement.BL.Tenant.RoomSearch;
 using RentRoomManagement.Common.Entitites.RoomSearch.RoomPost;
 using RentRoomManagement.Common.Entitites.TDto;
@@ -20,6 +21,7 @@ namespace RentRoomManagement.API.Controllers.RoomSearch
         /// <summary>
         /// Yêu thích bài viết
         /// </summary>
+        [Authorize]
         [HttpPost("favorite-post")]
         public async Task<IActionResult> LovePost([FromBody] FavoritePostParam param)
         {
@@ -31,6 +33,7 @@ namespace RentRoomManagement.API.Controllers.RoomSearch
         /// Bài viết đã yêu thích
         /// </summary>
         [HttpGet("my-favorite-posts/{userID}")]
+        [Authorize]
         public async Task<IActionResult> GetFavoritePosts(Guid userID)
         {
             var result = await _roomPostBL.GetFavoritePosts(userID);
@@ -40,6 +43,7 @@ namespace RentRoomManagement.API.Controllers.RoomSearch
         /// <summary>
         /// Lấy bài viết đã lưu hoặc đăng
         /// </summary>
+        [Authorize]
         [HttpGet("my-posts/{userID}")]
         public async Task<IActionResult> GetMyPosts(Guid userID)
         {
@@ -80,9 +84,7 @@ namespace RentRoomManagement.API.Controllers.RoomSearch
             }
         }
 
-        /// <summary>
-        /// Phân trang theo bộ lọc
-        /// </summary>
+        [Authorize]
         [HttpPost("location")]
         public async Task<IActionResult> SaveLocation([FromBody] RoomPostLocationEntity param)
         {

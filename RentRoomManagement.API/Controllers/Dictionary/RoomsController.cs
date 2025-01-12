@@ -1,8 +1,10 @@
-﻿using RentRoomManagement.BL.Tenant.Dictonary.RoomBL;
+﻿using Microsoft.AspNetCore.Authorization;
+using RentRoomManagement.BL.Tenant.Dictonary.RoomBL;
 using RentRoomManagement.Common.Entitites.Dictionary.Room;
 
 namespace RentRoomManagement.API.Controllers.Dictionary
 {
+    [Authorize]
     public class RoomsController : BasesController<RoomEntity, RoomDto>
     {
         #region Field

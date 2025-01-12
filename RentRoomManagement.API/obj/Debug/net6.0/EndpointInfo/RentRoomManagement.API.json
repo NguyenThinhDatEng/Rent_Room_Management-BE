@@ -2660,6 +2660,9 @@
           "password": {
             "type": "string",
             "nullable": true
+          },
+          "role": {
+            "$ref": "#/components/schemas/Role"
           }
         },
         "additionalProperties": false
@@ -2753,6 +2756,16 @@
           }
         },
         "additionalProperties": false
+      },
+      "Role": {
+        "enum": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
       },
       "RoomCategoryEntity": {
         "type": "object",

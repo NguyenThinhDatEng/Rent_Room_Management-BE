@@ -1,4 +1,6 @@
-﻿using RentContractManagement.BL.Tenant.Dictonary.ContractBL;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using RentContractManagement.BL.Tenant.Dictonary.ContractBL;
 using RentContractManagement.DL.Tenant.Dictionary.ContractDL;
 using RentRoomManagement.BL.RoomManagement;
 using RentRoomManagement.BL.RoomManagement.FeeBL;
@@ -21,6 +23,7 @@ using RentRoomManagement.DL.Tenant.Dictionary.RoomCategoryDL;
 using RentRoomManagement.DL.Tenant.Dictionary.RoomDL;
 using RentRoomManagement.DL.Tenant.Dictionary.ServiceFeeDL;
 using RentRoomManagement.DL.Tenant.Dictionary.VehicleFeeDL;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +44,24 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    };
+});
 
 // Dependency injection
 #region Dictionary
@@ -99,6 +120,7 @@ app.UseCors("AllowAllOrigins");
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

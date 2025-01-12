@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentRoomManagement.BL.RoomManagement;
 using RentRoomManagement.Common.Entitites.TDto;
 using RentRoomManagement.Common.Enums;
@@ -9,6 +10,7 @@ namespace RentRoomManagement.API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize]
     public class HouseholdsController : ControllerBase
     {
         #region Field

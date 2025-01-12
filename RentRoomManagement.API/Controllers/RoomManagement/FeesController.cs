@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentRoomManagement.BL.RoomManagement.FeeBL;
 using RentRoomManagement.Common.Entitites.RoomManangement.fee;
 using RentRoomManagement.Common.Entitites.TDto;
@@ -11,6 +12,7 @@ namespace RentRoomManagement.API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize]
     public class FeesController : ControllerBase
     {
         #region Field
