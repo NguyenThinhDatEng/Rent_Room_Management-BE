@@ -36,6 +36,37 @@
         }
       }
     },
+    "/api/v1/Auth/login-callback": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/v1/Buildings/list": {
       "post": {
         "tags": [
@@ -684,6 +715,99 @@
         "tags": [
           "Location"
         ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Notifications": {
+      "post": {
+        "tags": [
+          "Notifications"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificationEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificationEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificationEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Notifications/list": {
+      "post": {
+        "tags": [
+          "Notifications"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPagingItem"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Renters/linking": {
+      "post": {
+        "tags": [
+          "Renters"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BuldingLinkingParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BuldingLinkingParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BuldingLinkingParam"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success"
@@ -2440,6 +2564,10 @@
             "type": "string",
             "format": "uuid"
           },
+          "building_code": {
+            "type": "integer",
+            "format": "int32"
+          },
           "building_name": {
             "type": "string",
             "nullable": true
@@ -2455,6 +2583,20 @@
           "status": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BuldingLinkingParam": {
+        "type": "object",
+        "properties": {
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "buildingCode": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2645,7 +2787,9 @@
           2,
           3,
           4,
-          5
+          5,
+          6,
+          7
         ],
         "type": "integer",
         "format": "int32"
@@ -2663,6 +2807,60 @@
           },
           "role": {
             "$ref": "#/components/schemas/Role"
+          },
+          "userOauth2Id": {
+            "type": "string",
+            "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userEmail": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NotificationEntity": {
+        "type": "object",
+        "properties": {
+          "notification_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "from_user_id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "to_user_id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "notification_title": {
+            "type": "string",
+            "nullable": true
+          },
+          "notification_message": {
+            "type": "string",
+            "nullable": true
+          },
+          "notification_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "read_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2941,7 +3139,8 @@
             "format": "int32"
           },
           "post_status": {
-            "type": "boolean"
+            "type": "integer",
+            "format": "int32"
           },
           "created_date": {
             "type": "string",
@@ -3050,24 +3249,6 @@
       "UserEntity": {
         "type": "object",
         "properties": {
-          "created_date": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "created_by": {
-            "type": "string",
-            "nullable": true
-          },
-          "modified_date": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "modified_by": {
-            "type": "string",
-            "nullable": true
-          },
           "user_id": {
             "type": "string",
             "format": "uuid"
@@ -3075,22 +3256,6 @@
           "user_name": {
             "type": "string",
             "nullable": true
-          },
-          "gender": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "phone_number": {
-            "type": "string",
-            "nullable": true
-          },
-          "identifier_number": {
-            "type": "string",
-            "nullable": true
-          },
-          "is_renting": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false

@@ -15,5 +15,7 @@ namespace RentRoomManagement.Common.Entitites
         public string? user_zalo { get; set; } // tương ứng với user_zalo, có thể null
         public string? user_facebook { get; set; } // tương ứng với user_facebook, có thể null
         public string? user_avatar { get; set; } // tương ứng với user_avatar, có thể null
+        public string? user_oauth2_id { get; set; }
+        public string user_name { get; set; }
     }
 }

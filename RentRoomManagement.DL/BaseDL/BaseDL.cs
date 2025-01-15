@@ -293,7 +293,7 @@ namespace RentRoomManagement.DL
             {
                 {"id", recordID }
             };
-            var result = await connection.QueryFirstAsync<TDto>(sql, param);
+            var result = await connection.QueryFirstOrDefaultAsync<TDto>(sql, param);
 
             await connection.CloseAsync();
 
@@ -350,8 +350,6 @@ namespace RentRoomManagement.DL
         /// <summary>
         /// Thêm mới bản ghi
         /// </summary>
-        /// Return: Trả về số bản ghi bị ảnh hưởng
-        /// Author: NVThinh (04/09/2023)
         public virtual async Task<TDto?> InsertSync(T entity)
         {
             using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
@@ -400,11 +398,11 @@ namespace RentRoomManagement.DL
             AddParameters(command, entity);
 
             // Thực thi câu truy vấn
-            var newID = command.ExecuteScalar();
+            var affectRows = command.ExecuteNonQuery();
 
             await mySqlConnection.CloseAsync();
 
-            if (newID != null)
+            if (affectRows > 0)
             {
                 return entity;
             }

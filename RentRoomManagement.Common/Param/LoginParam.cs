@@ -11,5 +11,9 @@ namespace RentRoomManagement.Common.Param
         /// Vai trò
         /// </summary>
         public Role Role { get; set; }
+
+        public string? UserOauth2Id { get; set; }
+        public string? UserName { get; set; }
+        public string? UserEmail { get; set; }
     }
 }

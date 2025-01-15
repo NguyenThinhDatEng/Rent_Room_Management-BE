@@ -11,9 +11,9 @@ namespace RentRoomManagement.Common.Entitites.RoomSearch.RoomPost
 
         public string? post_code { get; set; }
 
-        public string post_title { get; set; }
+        public string? post_title { get; set; }
 
-        public string room_address { get; set; }
+        public string? room_address { get; set; }
         public decimal room_price { get; set; }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace RentRoomManagement.Common.Entitites.RoomSearch.RoomPost
 
         public int room_gender { get; set; }
 
-        public bool post_status { get; set; }
+        public int post_status { get; set; }
 
         public DateTime created_date { get; set; } = DateTime.Now;
     }

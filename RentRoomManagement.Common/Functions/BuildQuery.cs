@@ -44,8 +44,14 @@ namespace RentRoomManagement.Common.Functions
                     case FilterOperator.GreaterThan:
                         condition = $"{filter.Field} > '{filter.Value}'";
                         break;
+                    case FilterOperator.GreaterThanOrEqual:
+                        condition = $"{filter.Field} >= '{filter.Value}'";
+                        break;
                     case FilterOperator.LessThan:
                         condition = $"{filter.Field} < '{filter.Value}'";
+                        break;
+                    case FilterOperator.LessThanOrEqual:
+                        condition = $"{filter.Field} <= '{filter.Value}'";
                         break;
                     case FilterOperator.Contains:
                         condition = $"{filter.Field} LIKE '%{filter.Value}%'";

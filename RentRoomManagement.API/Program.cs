@@ -2,6 +2,9 @@
 using Microsoft.IdentityModel.Tokens;
 using RentContractManagement.BL.Tenant.Dictonary.ContractBL;
 using RentContractManagement.DL.Tenant.Dictionary.ContractDL;
+using RentRoomManagement.BL;
+using RentRoomManagement.BL.auth;
+using RentRoomManagement.BL.Notification;
 using RentRoomManagement.BL.RoomManagement;
 using RentRoomManagement.BL.RoomManagement.FeeBL;
 using RentRoomManagement.BL.RoomManagement.vehicleBL;
@@ -13,8 +16,11 @@ using RentRoomManagement.BL.Tenant.Dictonary.RoomCategoryBL;
 using RentRoomManagement.BL.Tenant.Dictonary.VehicleFeeBL;
 using RentRoomManagement.BL.Tenant.RoomSearch;
 using RentRoomManagement.DL;
+using RentRoomManagement.DL.auth;
+using RentRoomManagement.DL.Notification;
 using RentRoomManagement.DL.RoomManagement;
 using RentRoomManagement.DL.RoomManagement.FeeDL;
+using RentRoomManagement.DL.RoomManagement.RenterDL;
 using RentRoomManagement.DL.RoomManagement.VehicleDL;
 using RentRoomManagement.DL.RoomSearch;
 using RentRoomManagement.DL.Tenant.Dictionary.BuildingDL;
@@ -39,8 +45,13 @@ builder.Services.AddCors(options =>
 });
 
 // Add services to the container.
+// Cấu hình AddJsonOptions => Không trả về thông tin null
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+});
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -63,7 +74,15 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// Dependency injection
+// Dependency injectionGetUserOAuth2GetUserOAuth2
+builder.Services.AddScoped<IAuthBL, AuthBL>();
+builder.Services.AddScoped<IAuthDL, AuthDL>();
+
+builder.Services.AddScoped<IRenterDL, RenterDL>();
+
+builder.Services.AddScoped<INotificationBL, NotificationBL>();
+builder.Services.AddScoped<INotificationDL, NotificationDL>();
+
 #region Dictionary
 builder.Services.AddScoped<IBuildingBL, BuildingBL>();
 builder.Services.AddScoped<IBuildingDL, BuildingDL>();

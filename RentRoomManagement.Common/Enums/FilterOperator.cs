@@ -7,6 +7,8 @@
         GreaterThan,
         LessThan,
         Contains,
-        IN
+        IN,
+        GreaterThanOrEqual,
+        LessThanOrEqual
     }
 }

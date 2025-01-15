@@ -66,7 +66,6 @@ namespace RentRoomManagement.API.Controllers
         /// API Lấy tất cả bản ghi
         /// </summary>
         /// <returns>Danh sách tất cả bản ghi</returns>
-        /// Author: Nguyen Van Thinh 11/11/2022
         [HttpGet]
         public async Task<IActionResult> GetAllRecords()
         {

@@ -9,6 +9,8 @@ namespace RentRoomManagement.Common.Entities.Dictionary
         [Key]
         public Guid building_id { get; set; } // Khóa chính
 
+        public int building_code { get; set; }
+
         public string building_name { get; set; } // Tên nhà, tòa nhà, ..
 
         public string? building_address { get; set; } // địa chỉ

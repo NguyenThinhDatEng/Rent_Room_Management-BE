@@ -16,6 +16,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "RentRoomManagement.API.Controllers.Auth.AuthController",
+    "Method": "LoginCallback",
+    "RelativePath": "api/v1/Auth/login-callback",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "RentRoomManagement.Common.Param.LoginParam",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "RentRoomManagement.API.Controllers.BasesController\u00602[[RentRoomManagement.Common.Entities.Dictionary.BuildingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RentRoomManagement.Common.Entities.Dictionary.BuildingEntity, RentRoomManagement.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "GetAllRecords",
     "RelativePath": "api/v1/Buildings",
@@ -399,6 +415,54 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.NotificationsController",
+    "Method": "SendNoti",
+    "RelativePath": "api/v1/Notifications",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "notification",
+        "Type": "NotificationEntity",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.NotificationsController",
+    "Method": "GetPaging",
+    "RelativePath": "api/v1/Notifications/list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pagingItem",
+        "Type": "RentRoomManagement.Common.Query.DictionaryPagingItem",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentRoomManagement.API.Controllers.RentersController",
+    "Method": "LinkToBuilding",
+    "RelativePath": "api/v1/Renters/linking",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "RentRoomManagement.Common.Param.BuldingLinkingParam",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

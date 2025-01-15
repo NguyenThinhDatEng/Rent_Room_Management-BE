@@ -11,8 +11,8 @@ namespace RentRoomManagement.Common.Entitites.RoomSearch.RoomPost
         public Guid province_id { get; set; }
         public Guid district_id { get; set; }
         public Guid ward_id { get; set; }
-        public string street_name { get; set; }
-        public string house_number { get; set; }
+        public string? street_name { get; set; }
+        public string? house_number { get; set; }
         public Guid room_post_id { get; set; }
     }
 }
