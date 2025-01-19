@@ -1,8 +1,9 @@
 ﻿using RentRoomManagement.Common.Entities.Dictionary;
+using RentRoomManagement.Common.Entitites.DTO;
 
 namespace RentRoomManagement.DL.Tenant.Dictionary.BuildingDL
 {
-    public interface IBuildingDL : IBaseDL<BuildingEntity, BuildingEntity>
+    public interface IBuildingDL : IBaseDL<BuildingEntity, BuildingDto>
     {
     }
 }

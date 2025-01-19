@@ -1,6 +1,12 @@
-﻿using MySqlConnector;
+﻿using Dapper;
+using MySqlConnector;
+using RentRoomManagement.Common.Entities.Dictionary;
+using RentRoomManagement.Common.Entitites;
+using RentRoomManagement.Common.Entitites.Dictionary.Room;
+using RentRoomManagement.Common.Entitites.DTO;
 using RentRoomManagement.Common.Entitites.RoomSearch.RoomPost;
 using RentRoomManagement.Common.Enums;
+using RentRoomManagement.Common.Functions;
 using RentRoomManagement.Common.Param;
 using RentRoomManagement.Common.Query;
 
@@ -51,7 +57,7 @@ namespace RentRoomManagement.DL.RoomSearch
                 mySqlConnection.Open();
 
                 // Thực hiện chèn dữ liệu vào bảng
-                var tableName = TableNameMapper<FavoritePostEntity>();
+                var tableName = BuildQuery.TableNameMapper<FavoritePostEntity>();
                 MySqlCommand command = new MySqlCommand($"DELETE FROM {tableName} WHERE " +
                     $"{nameof(FavoritePostEntity.user_id)} = @userId AND " +
                     $"{nameof(FavoritePostEntity.room_post_id)} = @roomPostId", mySqlConnection);
@@ -147,6 +153,90 @@ namespace RentRoomManagement.DL.RoomSearch
 
                 result = await GetAll<RoomPostDtoClient>(pagingItem) as List<RoomPostDtoClient>;
             }
+
+            return result;
+        }
+
+        public async Task<LinkingAccountEntity> LinkToInnkeeper(LinkingParam linkingParam)
+        {
+            using (var connection = new MySqlConnection(DatabaseContext.ConnectionString))
+            {
+                connection.Open();
+
+                var userTable = BuildQuery.TableNameMapper<UserEntity>();
+
+                var userIdField = nameof(UserEntity.user_id);
+                var accountField = nameof(UserEntity.account);
+                var innkeeperId = nameof(LinkingAccountEntity.innkeeper_id);
+
+                string sql = $"SELECT u.{userIdField} as {innkeeperId} " +
+                    $"FROM {userTable} u " +
+                    $"JOIN user_roles ur ON ur.{userIdField} = u.{userIdField} AND ur.role_id = {(int)Role.Inkeeper} " +
+                    $"WHERE u.{accountField} = @phoneNumber";
+
+                var param = new Dictionary<string, object>()
+                {
+                    {"phoneNumber", linkingParam.PhoneNumber ?? "" },
+                };
+
+                var result = await connection.QueryFirstOrDefaultAsync<LinkingAccountEntity>(sql, param);
+                if (result != null)
+                {
+                    return result;
+                }
+
+            }
+            return default;
+        }
+
+        public async void DeleteLinking(Guid roomSeekerId)
+        {
+            using (var connection = new MySqlConnection(DatabaseContext.ConnectionString))
+            {
+                connection.Open();
+
+               var table = BuildQuery.TableNameMapper<LinkingAccountEntity>();
+                var idField = nameof(LinkingAccountEntity.room_seeker_id);
+
+                var sql = $"DELETE FROM {table} WHERE {idField} = @id";
+
+                MySqlCommand command = new MySqlCommand(sql, connection);
+
+                command.Parameters.AddWithValue("@id", roomSeekerId);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public async Task<RoomPostDtoClient> GetNew(RoomPostParam roomPostParam)
+        {
+            var connection = new MySqlConnection(DatabaseContext.ConnectionString);
+            await connection.OpenAsync();
+
+            var roomIdField = nameof(RoomEntity.room_id);
+            var buildingIdField = nameof(RoomEntity.building_id);
+            var roomAddressFiled = nameof(RoomPostEntity.room_address);
+            var buildingAddressField = nameof(BuildingEntity.building_address);
+
+            var roomTable = BuildQuery.TableNameMapper<RoomEntity>();
+            var buildingTable = BuildQuery.TableNameMapper<BuildingDto>();
+            var roomPostLocationTable = BuildQuery.TableNameMapper<RoomPostLocationEntity>();
+
+            var sql = $"Select r.*, " +
+                $"b.* " +
+                $"b.{buildingAddressField} as {roomAddressFiled} " +
+                $"from {roomTable} where r.{roomIdField} = @roomId " +
+                $"join {buildingTable} b on b.{buildingIdField} = r.{buildingIdField} ";
+
+            // Thực hiện chèn dữ liệu vào bảng
+
+            var param = new Dictionary<string, object>()
+            {
+                {"roomId", roomPostParam.room_id }
+            };
+            var result = await connection.QueryFirstOrDefaultAsync<RoomPostDtoClient>(sql, param);
+
+            await connection.CloseAsync();
 
             return result;
         }

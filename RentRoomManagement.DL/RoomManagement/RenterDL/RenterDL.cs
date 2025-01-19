@@ -1,7 +1,9 @@
 ﻿using Dapper;
 using MySqlConnector;
 using RentRoomManagement.Common.Entities.Dictionary;
-using RentRoomManagement.Common.Entitites.Dictionary;
+using RentRoomManagement.Common.Entitites;
+using RentRoomManagement.Common.Entitites.Dictionary.Room;
+using RentRoomManagement.Common.Entitites.DTO;
 using RentRoomManagement.Common.Enums;
 using RentRoomManagement.Common.Param;
 
@@ -9,32 +11,39 @@ namespace RentRoomManagement.DL.RoomManagement.RenterDL
 {
     public class RenterDL : IRenterDL
     {
-        public async Task<UserEntity?> LinkToBuilding(BuldingLinkingParam buldingLinkingParam)
+        public async Task<UserDtoClient?> LinkToBuilding(LinkingParam buldingLinkingParam)
         {
             using (var connection = new MySqlConnection(DatabaseContext.ConnectionString))
             {
                 connection.Open();
 
                 var userTableName = "users";
-                string sql = $"SELECT u.{nameof(UserEntity.user_id)}, u.{nameof(UserEntity.user_name)} FROM {userTableName} u " +
-                    "JOIN user_roles ur ON ur.user_id = u.user_id " +
+                var buildingIdField = nameof(BuildingEntity.building_id);
+                var roomCodeField = nameof(RoomEntity.room_code);
+                var roomIdField = nameof(RoomEntity.room_id);
+                string sql = $"SELECT u.{nameof(UserEntity.user_id)}, " +
+                    $"u.{nameof(UserEntity.user_name)}, " +
+                    $"rr.{roomIdField} " +
+                    $"FROM {userTableName} u " +
+                    $"JOIN user_roles ur ON ur.user_id = u.user_id AND ur.role_id = {(int)Role.Inkeeper} " +
                     $"JOIN rhm_building rb on u.user_id = rb.user_id " +
-                    $"WHERE u.phone_number = @phoneNumber AND ur.role_id = {(int)Role.Inkeeper} AND rb.{nameof(BuildingEntity.building_code)} = @buildingCode";
+                    $"JOIN rhm_room rr on  rr.{buildingIdField} = rb.{buildingIdField} AND rr.{roomCodeField} = @roomCode " +
+                    $"WHERE u.phone_number = @phoneNumber";
 
                 var param = new Dictionary<string, object>()
                 {
                     {"phoneNumber", buldingLinkingParam.PhoneNumber ?? "" },
-                    {"buildingCode", buldingLinkingParam.BuildingCode ?? "" },
+                    {"roomCode", buldingLinkingParam.RoomCode ?? "" },
                 };
 
-                var result = await connection.QueryFirstOrDefaultAsync<UserEntity>(sql, param);
+                var result = await connection.QueryFirstOrDefaultAsync<UserDtoClient>(sql, param);
                 if (result != null)
                 {
                     return result;
                 }
 
             }
-            return default(UserEntity);
+            return default;
         }
     }
 }

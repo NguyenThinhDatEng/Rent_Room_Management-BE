@@ -2,8 +2,11 @@
 using MySqlConnector;
 using RentRoomManagement.Common.Entities.Dictionary;
 using RentRoomManagement.Common.Entitites;
+using RentRoomManagement.Common.Entitites.Dictionary;
+using RentRoomManagement.Common.Entitites.Dictionary.Room;
 using RentRoomManagement.Common.Entitites.DTO;
 using RentRoomManagement.Common.Enums;
+using RentRoomManagement.Common.Functions;
 using RentRoomManagement.Common.Param;
 using RentRoomManagement.DL;
 using RentRoomManagement.DL.auth;
@@ -35,10 +38,11 @@ namespace RentRoomManagement.BL
 
                 string hashedPassword = CalculateSHA256Hash(loginParam.Password);
 
+                var accountField = nameof(UserEntity.account);
                 string sql = $"SELECT u.*, rb.{nameof(BuildingEntity.building_id)} FROM users u " +
                     "JOIN user_roles ur ON ur.user_id = u.user_id " +
                     $"LEFT JOIN rhm_building rb on u.user_id = rb.user_id AND rb.{nameof(BuildingEntity.status)} = {(int)BuildingStatus.Using} " +
-                    "WHERE u.phone_number = @username AND u.password_hash = @password AND ur.role_id = @roleID";
+                    $"WHERE u.{accountField} = @username AND u.password_hash = @password AND ur.role_id = @roleID";
 
                 var param = new Dictionary<string, object>()
                 {
@@ -80,10 +84,27 @@ namespace RentRoomManagement.BL
             using (var connection = new MySqlConnection(DatabaseContext.ConnectionString))
             {
                 connection.Open();
-                string sql = $"SELECT u.*, rbl.building_id as building_linking_id from {tableName} u " +
+
+                var roomTable = BuildQuery.TableNameMapper<RoomEntity>();
+                var buildingNameField = nameof(BuildingEntity.building_name);
+                var buildingIdField = nameof(BuildingEntity.building_id);
+                var userIdField = nameof(UserEntity.user_id);
+                var roomIdField = nameof(RoomEntity.room_id);
+                var roomNameField = nameof(RoomEntity.room_name);
+
+                var str = loginParam.Role != Role.RoomSeeker ? $"rbl.{userIdField}" : "la.innkeeper_id";
+
+                string sql = $"SELECT u.*, " +
+                    $"{str} as innkeeper_id," +
+                    $"rb.{buildingNameField}, " +
+                    $"rr.{roomNameField} " +
+                    $"from {tableName} u " +
                     "JOIN user_roles ur ON ur.user_id = u.user_id " +
                     $"LEFT JOIN rhm_building_linking rbl on u.user_id = rbl.user_id " +
-                    $"WHERE u.{nameof(User.user_oauth2_id)} = @id AND ur.role_id = @roleID";
+                    $"LEFT JOIN {roomTable} rr on rr.{roomIdField} = rbl.{roomIdField} " +
+                    $"LEFT JOIN rhm_building rb on rr.{buildingIdField} = rb.{buildingIdField} " +
+                    $"LEFT JOIN linking_account la on u.{userIdField} = la.room_seeker_id " +
+                    $"WHERE u.{nameof(UserEntity.user_oauth2_id)} = @id AND ur.role_id = @roleID";
 
                 var param = new Dictionary<string, object>()
                 {
@@ -98,7 +119,7 @@ namespace RentRoomManagement.BL
                     // Đăng ký user tương ứng
                     var userId = Guid.NewGuid();
                     sql = $"INSERT INTO {tableName}" +
-                        $"({nameof(User.user_id)},{nameof(User.user_name)},{nameof(User.user_oauth2_id)},{nameof(User.user_email)}) " +
+                        $"({nameof(UserEntity.user_id)},{nameof(UserEntity.user_name)},{nameof(UserEntity.user_oauth2_id)},{nameof(UserEntity.user_email)}) " +
                         $"Value ('{userId}', '{loginParam.UserName}', '{loginParam.UserOauth2Id}', '{loginParam.UserEmail}')";
 
                     result = new UserDtoClient()
@@ -113,7 +134,7 @@ namespace RentRoomManagement.BL
 
                     if (affectRows > 0)
                     {
-                        sql = $"INSERT INTO user_roles({nameof(User.user_id)},role_id) Value ('{userId}',{(int)loginParam.Role})";
+                        sql = $"INSERT INTO user_roles({nameof(UserEntity.user_id)},role_id) Value ('{userId}',{(int)loginParam.Role})";
                         _ = await connection.ExecuteAsync(sql);
 
                         if ((loginParam.Role == Role.Inkeeper || loginParam.Role == Role.Renter))

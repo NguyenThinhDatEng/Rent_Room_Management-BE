@@ -9,6 +9,7 @@
         Contains,
         IN,
         GreaterThanOrEqual,
-        LessThanOrEqual
+        LessThanOrEqual,
+        Between
     }
 }

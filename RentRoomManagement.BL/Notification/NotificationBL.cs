@@ -1,4 +1,6 @@
-﻿using RentRoomManagement.DL.Notification;
+﻿using RentRoomManagement.Common.Entitites;
+using RentRoomManagement.Common.Query;
+using RentRoomManagement.DL.Notification;
 
 namespace RentRoomManagement.BL.Notification
 {
@@ -12,12 +14,34 @@ namespace RentRoomManagement.BL.Notification
 
         public async Task<bool> SendNoti(NotificationEntity notification)
         {
-            var res = await InsertAsync(notification);
-            if (res != null)
+            try
             {
-                return true;
+                await InsertAsync(notification);
+                if (notification.is_related == true)
+                {
+                    var paging = new PagingItem();
+                    paging.Filters.Add(
+                        new FilterItem()
+                        {
+                            Field = nameof(LinkingAccountEntity.room_seeker_id),
+                            Value = notification.to_user_id,
+                            Operator = Common.Enums.FilterOperator.Equal
+                        }
+                    );
+                    var linkingAcc = await _notificationDL.GetAll<LinkingAccountEntity>(paging);
+                    if (linkingAcc.Any())
+                    {
+                        var newNoti = notification;
+                        newNoti.to_user_id = linkingAcc[0].innkeeper_id;
+                        await InsertAsync(notification);
+                    }
+                }
             }
-            return false;
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return true;
         }
 
         public async Task ReadNoti(Guid notificationId)

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RentRoomManagement.Common.Entitites;
 using RentRoomManagement.Common.Entitites.RoomSearch.RoomPost;
 using RentRoomManagement.Common.Entitites.TDto;
 using RentRoomManagement.Common.Enums;
@@ -104,6 +105,18 @@ namespace RentRoomManagement.BL.Tenant.RoomSearch
                     catch (Exception ex) { }
                 }
             }
+
+            //Xử lý kết quả trả về
+            //string lastNum = Regex.Match(entity.post_code, @"(\d+)(?!.*\d)").Value;
+            //int.TryParse(lastNum, out int postCodeNum);
+
+            //var newLastCode = new LastCodeEntity()
+            //{
+            //    code_value = postCodeNum,
+            //    pre_code = "#",
+            //    table_name = BuildQuery.TableNameMapper<RoomPostEntity>()
+            //};
+            //UpdateAsync(newLastCode);
         }
 
         /// <summary>
@@ -131,7 +144,8 @@ namespace RentRoomManagement.BL.Tenant.RoomSearch
 
                     // Lấy lại bộ lọc
                     pagingItem.Filters = filterList;
-                } else
+                }
+                else
                 {
                     return new PagingResult()
                     {
@@ -150,6 +164,21 @@ namespace RentRoomManagement.BL.Tenant.RoomSearch
         public async Task SaveLocation(RoomPostLocationEntity roomPostLocation)
         {
             await InsertAsync(roomPostLocation);
+        }
+
+        public async Task<LinkingAccountEntity> LinkToInnkeeper(LinkingParam linkingParam)
+        {
+            return await _roomPostDL.LinkToInnkeeper(linkingParam);
+        }
+
+        public void DeleteLinking(Guid roomSeekerId)
+        {
+            _roomPostDL.DeleteLinking(roomSeekerId);
+        }
+
+        public async Task<RoomPostDtoClient> GetNew(RoomPostParam roomPostParam)
+        {
+            return await _roomPostDL.GetNew(roomPostParam);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace RentRoomManagement.API.Controllers
 
 
         [HttpPost("linking")]
-        public async Task<IActionResult> LinkToBuilding([FromBody] BuldingLinkingParam param)
+        public async Task<IActionResult> LinkToBuilding([FromBody] LinkingParam param)
         {
             try
             {

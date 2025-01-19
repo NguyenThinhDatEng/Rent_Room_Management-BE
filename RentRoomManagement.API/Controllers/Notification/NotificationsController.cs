@@ -20,6 +20,13 @@ namespace RentRoomManagement.API.Controllers
             _notificationBL = notificationBL;
         }
 
+        [HttpGet("{notificationId}")]
+        public async Task<IActionResult> ReadNoti(Guid notificationId)
+        {
+            await _notificationBL.ReadNoti(notificationId);
+            return Ok();
+        }
+
         [HttpPost]
         public async Task<IActionResult> SendNoti(NotificationEntity notification)
         {

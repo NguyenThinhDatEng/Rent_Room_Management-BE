@@ -4,10 +4,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace RentRoomManagement.Common.Entitites
 {
     [Table("users")]
-    public class User
+    public class UserEntity
     {
         [Key]
         public Guid user_id { get; set; } // tương ứng với user_id
+        /// <summary>
+        /// Tài khoản
+        /// </summary>
+        public string? account { get; set; }
+
         public string phone_number { get; set; } // tương ứng với phone_number
         public string second_phone_number { get; set; } // tương ứng với second_phone_number
         public string? password_hash { get; set; } // tương ứng với password_hash

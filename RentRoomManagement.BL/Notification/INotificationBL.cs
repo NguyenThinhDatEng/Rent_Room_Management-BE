@@ -3,5 +3,7 @@
     public interface INotificationBL : IBaseBL<NotificationEntity, NotificationEntity>
     {
         Task<bool> SendNoti(NotificationEntity notification);
+
+        Task ReadNoti(Guid notificationId);
     }
 }

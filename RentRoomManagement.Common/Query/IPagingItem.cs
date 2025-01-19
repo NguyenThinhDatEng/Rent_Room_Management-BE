@@ -4,7 +4,7 @@
     {
         int Skip { get; set; }
 
-        int Take { get; set; }
+        int? Take { get; set; }
 
         List<string> Columns { get; set; }
 

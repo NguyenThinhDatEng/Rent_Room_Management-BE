@@ -219,7 +219,10 @@ namespace RentRoomManagement.BL
         }
 
 
-
+        public async Task<T?> GetNew()
+        {
+            return await _baseDL.GetNew();
+        }
         #endregion
     }
 }

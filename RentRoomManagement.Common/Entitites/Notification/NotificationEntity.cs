@@ -16,8 +16,14 @@ public class NotificationEntity
     public string notification_message { get; set; } // tương ứng với notification_message
 
     public string notification_type { get; set; } // tương ứng với notification_type
+    public string? notification_data { get; set; } // tương ứng với notification_type
 
     public DateTime? read_at { get; set; } // tương ứng với is_read, mặc định là false
 
     public DateTime? created_at { get; set; } = DateTime.UtcNow; // tương ứng với created_at, có thể null
+
+    /// <summary>
+    /// Đánh dấu gửi cho cả các tk liên kết
+    /// </summary>
+    public bool? is_related { get; set; }
 }

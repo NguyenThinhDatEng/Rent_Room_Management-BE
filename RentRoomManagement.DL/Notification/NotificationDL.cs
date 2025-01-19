@@ -1,4 +1,5 @@
 ﻿using MySqlConnector;
+using RentRoomManagement.Common.Functions;
 
 namespace RentRoomManagement.DL.Notification
 {
@@ -9,7 +10,7 @@ namespace RentRoomManagement.DL.Notification
             MySqlConnection connection = new MySqlConnection(DatabaseContext.ConnectionString);
             await connection.OpenAsync();
 
-            var tableName = TableNameMapper<NotificationEntity>();
+            var tableName = BuildQuery.TableNameMapper<NotificationEntity>();
             MySqlCommand command = new MySqlCommand($"UPDATE {tableName} SET {nameof(NotificationEntity.read_at)} = @now WHERE {nameof(NotificationEntity.notification_id)} = @id;", connection);
 
             command.Parameters.AddWithValue("@now", DateTime.Now);

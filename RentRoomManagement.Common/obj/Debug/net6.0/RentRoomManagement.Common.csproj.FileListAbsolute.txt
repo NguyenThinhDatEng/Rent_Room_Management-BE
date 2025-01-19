@@ -13,3 +13,4 @@ C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.Common\obj\Deb
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.Common\obj\Debug\net6.0\refint\RentRoomManagement.Common.dll
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.Common\obj\Debug\net6.0\RentRoomManagement.Common.pdb
 C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.Common\obj\Debug\net6.0\ref\RentRoomManagement.Common.dll
+C:\Users\thinh\source\repos\RentRoomManagement\RentRoomManagement.Common\obj\Debug\net6.0\RentRoomManagement.Common.csproj.AssemblyReference.cache

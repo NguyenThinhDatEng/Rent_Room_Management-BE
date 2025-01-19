@@ -5,6 +5,8 @@ namespace RentRoomManagement.BL
 {
     public interface IBaseBL<T, TDto>
     {
+        Task<T?> GetNew();
+
         /// <summary>
         /// Lấy dữ liệu phân trang
         /// </summary>

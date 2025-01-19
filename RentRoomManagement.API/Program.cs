@@ -6,8 +6,11 @@ using RentRoomManagement.BL;
 using RentRoomManagement.BL.auth;
 using RentRoomManagement.BL.Notification;
 using RentRoomManagement.BL.RoomManagement;
+using RentRoomManagement.BL.RoomManagement.Expense;
 using RentRoomManagement.BL.RoomManagement.FeeBL;
 using RentRoomManagement.BL.RoomManagement.vehicleBL;
+using RentRoomManagement.BL.Tenant.Dictionary.AppointmentScheduleBL;
+using RentRoomManagement.BL.Tenant.Dictionary.ExpenseCategoryBL;
 using RentRoomManagement.BL.Tenant.Dictionary.ResidentBL;
 using RentRoomManagement.BL.Tenant.Dictionary.ServiceFeeBL;
 using RentRoomManagement.BL.Tenant.Dictonary.BuildingBL;
@@ -19,11 +22,14 @@ using RentRoomManagement.DL;
 using RentRoomManagement.DL.auth;
 using RentRoomManagement.DL.Notification;
 using RentRoomManagement.DL.RoomManagement;
+using RentRoomManagement.DL.RoomManagement.Expense;
 using RentRoomManagement.DL.RoomManagement.FeeDL;
 using RentRoomManagement.DL.RoomManagement.RenterDL;
 using RentRoomManagement.DL.RoomManagement.VehicleDL;
 using RentRoomManagement.DL.RoomSearch;
+using RentRoomManagement.DL.Tenant.Dictionary.AppointmentScheduleDL;
 using RentRoomManagement.DL.Tenant.Dictionary.BuildingDL;
+using RentRoomManagement.DL.Tenant.Dictionary.ExpenseCategoryDL;
 using RentRoomManagement.DL.Tenant.Dictionary.ResidentDL;
 using RentRoomManagement.DL.Tenant.Dictionary.RoomCategoryDL;
 using RentRoomManagement.DL.Tenant.Dictionary.RoomDL;
@@ -82,6 +88,15 @@ builder.Services.AddScoped<IRenterDL, RenterDL>();
 
 builder.Services.AddScoped<INotificationBL, NotificationBL>();
 builder.Services.AddScoped<INotificationDL, NotificationDL>();
+
+builder.Services.AddScoped<IExpenseCategoryBL, ExpenseCategoryBL>();
+builder.Services.AddScoped<IExpenseCategoryDL, ExpenseCategoryDL>();
+
+builder.Services.AddScoped<IExpenseBL, ExpenseBL>();
+builder.Services.AddScoped<IExpenseDL, ExpenseDL>();
+
+builder.Services.AddScoped<IAppointmentScheduleBL, AppointmentScheduleBL>();
+builder.Services.AddScoped<IAppointmentScheduleDL, AppointmentScheduleDL>();
 
 #region Dictionary
 builder.Services.AddScoped<IBuildingBL, BuildingBL>();

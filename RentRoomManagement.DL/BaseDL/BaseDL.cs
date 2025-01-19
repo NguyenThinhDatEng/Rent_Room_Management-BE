@@ -1,13 +1,16 @@
 ﻿using Dapper;
 using MySqlConnector;
+using RentRoomManagement.Common.Attributes;
 using RentRoomManagement.Common.Constants;
+using RentRoomManagement.Common.Entitites;
 using RentRoomManagement.Common.Entitites.TDto;
 using RentRoomManagement.Common.Enums;
 using RentRoomManagement.Common.Functions;
 using RentRoomManagement.Common.Query;
 using RentRoomManagement.Common.Resources;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
@@ -18,23 +21,10 @@ namespace RentRoomManagement.DL
     public class BaseDL<T, TDto> : IBaseDL<T, TDto>
     {
         #region Fields
-        private string _tableName = TableNameMapper<T>();
+        private string _tableName = BuildQuery.TableNameMapper<T>();
         #endregion
 
         #region Method
-        public static string TableNameMapper<TT>()
-        {
-            var type = typeof(TT);
-            TableAttribute tableAttribute = (TableAttribute)Attribute.GetCustomAttribute(type, typeof(TableAttribute));
-            var name = string.Empty;
-
-            if (tableAttribute != null)
-            {
-                name = tableAttribute.Name;
-            }
-
-            return name;
-        }
 
         private static EntityKey KeyMapper<TT>(TT entity)
         {
@@ -189,12 +179,18 @@ namespace RentRoomManagement.DL
 
             var result = new PagingResult();
 
-            var tableName = TableNameMapper<TDto>();
+            var tableName = BuildQuery.TableNameMapper<TDto>();
+
+            string? take = null;
+            if (pagingItem.Take != null) {
+                take = $"LIMIT {pagingItem.Skip}, {pagingItem.Take}";
+            }
+
             string query = $"SELECT {columnsStr} " +
                 $"FROM {tableName} " +
                 $"{whereClause} " +
                 $"{sortClause} " +
-                $"LIMIT {pagingItem.Skip}, {pagingItem.Take};";
+                $"{take};";
             result.Data = await connection.QueryAsync<TDto>(query);
 
             string countQuery = $"SELECT COUNT(*) FROM {tableName} {whereClause}";
@@ -237,7 +233,7 @@ namespace RentRoomManagement.DL
                 sortClause = BuildSortClause(pagingItem.Sorts);
             }
 
-            var tableName = TableNameMapper<TT>();
+            var tableName = BuildQuery.TableNameMapper<TT>();
             if (string.IsNullOrEmpty(tableName))
             {
                 throw new Exception("Thiếu cấu hình tên bảng");
@@ -267,7 +263,7 @@ namespace RentRoomManagement.DL
             await connection.OpenAsync();
 
             // Thực hiện chèn dữ liệu vào bảng
-            var sql = $"SELECT * FROM {TableNameMapper<TDto>()}";
+            var sql = $"SELECT * FROM {BuildQuery.TableNameMapper<TDto>()}";
 
             records = await connection.QueryAsync<TDto>(sql) as List<TDto>;
 
@@ -288,7 +284,7 @@ namespace RentRoomManagement.DL
             await connection.OpenAsync();
 
             // Thực hiện chèn dữ liệu vào bảng
-            var sql = $"SELECT * FROM {TableNameMapper<TDto>()} WHERE {KeyNameMapper<TDto>()} = @id;";
+            var sql = $"SELECT * FROM {BuildQuery.TableNameMapper<TDto>()} WHERE {KeyNameMapper<TDto>()} = @id;";
             var param = new Dictionary<string, object>()
             {
                 {"id", recordID }
@@ -391,7 +387,7 @@ namespace RentRoomManagement.DL
             await mySqlConnection.OpenAsync();
 
             // Thực hiện chèn dữ liệu vào bảng
-            MySqlCommand command = new MySqlCommand($"INSERT INTO {TableNameMapper<TT>()} ({GetColumnNames<TT>()}) " +
+            MySqlCommand command = new MySqlCommand($"INSERT INTO {BuildQuery.TableNameMapper<TT>()} ({GetColumnNames<TT>()}) " +
                 $"VALUES ({GetParameterNames<TT>()})", mySqlConnection);
 
             // Thêm các tham số vào câu truy vấn
@@ -592,6 +588,89 @@ namespace RentRoomManagement.DL
             }
         }
 
+        public virtual async Task<T?> GetNew()
+        {
+            var tableName = BuildQuery.TableNameMapper<T>();
+            if (string.IsNullOrEmpty(tableName))
+            {
+                throw new Exception("Không tìm thấy tên bảng");
+            }
+
+            Type type = typeof(T);
+            PropertyInfo[] properties = type.GetProperties();
+
+            PropertyInfo? codeProperty = null;
+            PropertyInfo? keyProperty = null;
+
+            foreach (PropertyInfo property in properties)
+            {
+                if (Attribute.IsDefined(property, typeof(KeyAttribute)))
+                {
+                    keyProperty = property;
+                }
+                else if (Attribute.IsDefined(property, typeof(CodeAttribute)))
+                {
+                    codeProperty = property;
+                }
+            }
+
+            if (codeProperty != null && keyProperty != null)
+            {
+                MySqlConnection connection = new MySqlConnection(DatabaseContext.ConnectionString);
+                await connection.OpenAsync();
+
+                var lastCodeTableName = BuildQuery.TableNameMapper<LastCodeEntity>();
+                string sql = $"select * from {lastCodeTableName} where {nameof(LastCodeEntity.table_name)} = '{tableName}'";
+                var lastCode = await connection.QueryFirstOrDefaultAsync<LastCodeEntity>(sql);
+
+                await connection.CloseAsync();
+
+                T newItem = Activator.CreateInstance<T>(); // Tạo một đối tượng mới của kiểu T
+
+                codeProperty.SetValue(newItem, $"{lastCode?.pre_code}{lastCode?.code_value}");
+                keyProperty.SetValue(newItem, Guid.NewGuid());
+
+                return newItem;
+            }
+
+            return default;
+        }
+
+        public async Task UpdateById<TT>(TT entity, string[] columnsToUpdate, object keyValue)
+        {
+            PropertyInfo keyProperty = null;
+
+            foreach (PropertyInfo property in typeof(TT).GetProperties())
+            {
+                if (Attribute.IsDefined(property, typeof(KeyAttribute)))
+                {
+                    keyProperty = property;
+                    break;
+                }
+            }
+
+            if (keyProperty == null)
+            {
+                Console.WriteLine("Không tìm thấy trường key theo KeyAttribute.");
+                return;
+            }
+
+            if (keyProperty.PropertyType != keyValue.GetType())
+            {
+                Console.WriteLine("Kiểu dữ liệu của key không phù hợp với trường key.");
+                return;
+            }
+
+            if ((int)keyValue != (int)keyProperty.GetValue(entity))
+            {
+                Console.WriteLine("Không tìm thấy entity với key đã cho.");
+                return;
+            }
+
+            //MySqlCommand command = new MySqlCommand($"UPDATE {BuildQuery.TableNameMapper<TT>}  SET {string.Join(",", columnsToUpdate.Select(x => $"{x} = @{x}"))}";
+
+            
+        }
         #endregion
     }
 }

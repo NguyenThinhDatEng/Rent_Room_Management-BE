@@ -81,5 +81,9 @@ namespace RentRoomManagement.DL
         /// Return: Trả về số bản ghi bị ảnh hưởng
         /// Author: NVThinh (04/09/2023)
         public int UpdateAsync(T entity);
+
+        Task<T?> GetNew();
+
+        Task<List<TT>> GetAll<TT>(PagingItem pagingItem);
     }
 }

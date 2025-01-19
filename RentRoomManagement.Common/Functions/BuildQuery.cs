@@ -1,4 +1,5 @@
-﻿using RentRoomManagement.Common.Enums;
+﻿using Newtonsoft.Json;
+using RentRoomManagement.Common.Enums;
 using RentRoomManagement.Common.Query;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -83,6 +84,14 @@ namespace RentRoomManagement.Common.Functions
 
                         condition = $"{filter.Field} IN ({filter.Value})";
                         break;
+                    case FilterOperator.Between:
+                        // Giả sử filter.Value là một tuple hoặc một danh sách chứa hai giá trị
+                        var values = JsonConvert.DeserializeObject<List<string>>(filter.Value.ToString());
+                        if (values.Count == 2)
+                        {
+                            condition = $"{filter.Field} BETWEEN '{values[0]}' AND '{values[1]}'";
+                        }
+                        break;
                     default:
                         // HanBLe other operators if needed
                         break;
@@ -105,7 +114,8 @@ namespace RentRoomManagement.Common.Functions
             var conditions = new List<string>();
 
             List<string> andConditions = BuildCondition(filters);
-            if (andConditions?.Count > 0) { 
+            if (andConditions?.Count > 0)
+            {
                 var andConditionStr = $"({string.Join($" AND ", andConditions)})";
                 conditions.Add(andConditionStr);
             }
@@ -120,7 +130,8 @@ namespace RentRoomManagement.Common.Functions
             if (conditions.Count > 0)
             {
                 return $"WHERE {string.Join("AND", conditions)}";
-            } else
+            }
+            else
             {
                 return "";
             }

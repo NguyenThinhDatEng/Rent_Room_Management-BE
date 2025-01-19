@@ -1,9 +1,9 @@
-﻿using RentRoomManagement.Common.Entitites.Dictionary;
-using RentRoomManagement.Common.Entitites.RoomSearch.RoomPost;
+﻿using RentRoomManagement.Common.Entitites;
+using RentRoomManagement.Common.Entitites.DTO;
 
 namespace RentRoomManagement.DL.Tenant.Dictionary
 {
-    public interface IUserDL : IBaseDL<UserEntity, RoomPostDtoClient>
+    public interface IUserDL : IBaseDL<UserEntity, UserDtoClient>
     {
     }
 }

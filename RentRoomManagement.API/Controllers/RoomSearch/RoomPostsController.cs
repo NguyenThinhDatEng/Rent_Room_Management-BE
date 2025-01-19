@@ -105,5 +105,29 @@ namespace RentRoomManagement.API.Controllers.RoomSearch
                 });
             }
         }
+
+        [Authorize]
+        [HttpPost("new")]
+        public async Task<IActionResult> GetNew(RoomPostParam roomPostParam)
+        {
+            var res = await _roomPostBL.GetNew(roomPostParam);
+            return Ok(res);
+        }
+        
+        [Authorize]
+        [HttpPost("linking")]
+        public async Task<IActionResult> LinkToInnkeeper(LinkingParam linkingParam)
+        {
+            var res = await _roomPostBL.LinkToInnkeeper(linkingParam);
+            return Ok(res);
+        }
+
+        [Authorize]
+        [HttpDelete("linking")]
+        public IActionResult DeleteLinking([FromRoute] Guid roomSeekerId)
+        {
+            _roomPostBL.DeleteLinking(roomSeekerId);
+            return Ok(true);
+        }
     }
 }

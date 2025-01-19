@@ -1,10 +1,10 @@
-﻿using RentRoomManagement.Common.Entitites.Dictionary;
-using RentRoomManagement.Common.Entitites.RoomSearch.RoomPost;
+﻿using RentRoomManagement.Common.Entitites;
+using RentRoomManagement.Common.Entitites.DTO;
 
 namespace RentRoomManagement.DL.Tenant.Dictionary
 {
 
-    public class UserDL : BaseDL<UserEntity, RoomPostDtoClient>, IUserDL
+    public class UserDL : BaseDL<UserEntity, UserDtoClient>, IUserDL
     {
     }
 }

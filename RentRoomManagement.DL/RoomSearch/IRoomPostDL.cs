@@ -1,4 +1,5 @@
-﻿using RentRoomManagement.Common.Entitites.RoomSearch.RoomPost;
+﻿using RentRoomManagement.Common.Entitites;
+using RentRoomManagement.Common.Entitites.RoomSearch.RoomPost;
 using RentRoomManagement.Common.Param;
 
 namespace RentRoomManagement.DL.RoomSearch
@@ -10,5 +11,11 @@ namespace RentRoomManagement.DL.RoomSearch
         Task<List<Guid>> FilterByCharacteristic(List<int> FilterVals);
 
         Task<List<RoomPostDtoClient>> GetFavoritePosts(Guid? userID);
+
+        Task<LinkingAccountEntity> LinkToInnkeeper(LinkingParam linkingParam);
+
+        void DeleteLinking(Guid roomSeekerId);
+
+        Task<RoomPostDtoClient> GetNew(RoomPostParam roomPostParam);
     }
 }

@@ -1,12 +1,12 @@
-﻿using RentRoomManagement.Common.Entitites.Dictionary;
-using RentRoomManagement.Common.Entitites.RoomSearch.RoomPost;
+﻿using RentRoomManagement.Common.Entitites;
+using RentRoomManagement.Common.Entitites.DTO;
 using RentRoomManagement.DL;
 
 namespace RentRoomManagement.BL.Tenant.Dictonary
 {
-    public class UserBL : BaseBL<UserEntity, RoomPostDtoClient>, IUserBL
+    public class UserBL : BaseBL<UserEntity, UserDtoClient>, IUserBL
     {
-        public UserBL(IBaseDL<UserEntity, RoomPostDtoClient> baseDL) : base(baseDL)
+        public UserBL(IBaseDL<UserEntity, UserDtoClient> baseDL) : base(baseDL)
         {
         }
     }
