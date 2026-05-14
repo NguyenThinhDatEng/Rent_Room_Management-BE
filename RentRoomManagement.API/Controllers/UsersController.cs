@@ -6,6 +6,7 @@ using RentRoomManagement.Common.Entitites;
 using RentRoomManagement.Common.Entitites.DTO;
 using RentRoomManagement.Common.Entitites.TDto;
 using RentRoomManagement.Common.Enums;
+using RentRoomManagement.Common.Param;
 using RentRoomManagement.Common.Resources;
 
 namespace RentRoomManagement.API.Controllers
@@ -66,6 +67,36 @@ namespace RentRoomManagement.API.Controllers
                     ErrorCode = (int)ErrorCode.NotFound,
                     DevMsg = Errors.DevMsg_Not_Found,
                     UserMsg = Errors.UserMsg_Not_Found,
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
+                {
+                    ErrorCode = (int)ErrorCode.Exception,
+                    DevMsg = Errors.DevMsg_Exception,
+                    UserMsg = Errors.UserMsg_Exception,
+                    MoreInfo = new List<string> { ex.Message },
+                });
+            }
+        }
+
+        /// <summary>
+        /// Đổi mật khẩu người dùng
+        /// </summary>
+        [HttpPut("change-password/{userId}")]
+        public async Task<IActionResult> ChangePassword([FromRoute] Guid userId, [FromBody] ChangePasswordParam param)
+        {
+            try
+            {
+                var (success, message) = await _userBL.ChangePassword(userId, param);
+                if (success)
+                    return StatusCode(StatusCodes.Status200OK, new { message });
+                return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult
+                {
+                    ErrorCode = (int)ErrorCode.BadRequest,
+                    DevMsg = message,
+                    UserMsg = message,
                 });
             }
             catch (Exception ex)
