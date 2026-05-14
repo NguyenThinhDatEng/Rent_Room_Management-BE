@@ -8,7 +8,9 @@
       "Bash(rtk grep *)",
       "Bash(xargs grep *)",
       "Read(//c/Users/thinh/source/repos/**)",
-      "Bash(rtk wc *)"
+      "Bash(rtk wc *)",
+      "Bash(rtk dotnet *)",
+      "Bash(grep -E \"\\\\.\\(dll|pdb|exe|obj|cache\\)$\")"
     ]
   }
 }

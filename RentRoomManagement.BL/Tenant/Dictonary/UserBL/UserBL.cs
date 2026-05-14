@@ -18,5 +18,10 @@ namespace RentRoomManagement.BL.Tenant.Dictonary
         {
             return await _userDL.GetUserProfile(userId);
         }
+
+        public async Task<bool> UpdateUserProfile(Guid userId, UserProfileDto dto)
+        {
+            return await _userDL.UpdateUserProfile(userId, dto);
+        }
     }
 }

@@ -49,5 +49,35 @@ namespace RentRoomManagement.API.Controllers
                 });
             }
         }
+
+        /// <summary>
+        /// Cập nhật thông tin liên hệ của người dùng
+        /// </summary>
+        [HttpPut("profile/{userId}")]
+        public async Task<IActionResult> UpdateUserProfile([FromRoute] Guid userId, [FromBody] UserProfileDto dto)
+        {
+            try
+            {
+                var updated = await _userBL.UpdateUserProfile(userId, dto);
+                if (updated)
+                    return StatusCode(StatusCodes.Status200OK);
+                return StatusCode(StatusCodes.Status404NotFound, new ErrorResult
+                {
+                    ErrorCode = (int)ErrorCode.NotFound,
+                    DevMsg = Errors.DevMsg_Not_Found,
+                    UserMsg = Errors.UserMsg_Not_Found,
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
+                {
+                    ErrorCode = (int)ErrorCode.Exception,
+                    DevMsg = Errors.DevMsg_Exception,
+                    UserMsg = Errors.UserMsg_Exception,
+                    MoreInfo = new List<string> { ex.Message },
+                });
+            }
+        }
     }
 }
