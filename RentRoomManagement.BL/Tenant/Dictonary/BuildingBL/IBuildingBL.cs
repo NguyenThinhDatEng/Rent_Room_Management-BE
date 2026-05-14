@@ -5,5 +5,6 @@ namespace RentRoomManagement.BL.Tenant.Dictonary.BuildingBL
 {
     public interface IBuildingBL : IBaseBL<BuildingEntity, BuildingDto>
     {
+        Task<bool> SetActiveBuilding(Guid buildingId, Guid userId);
     }
 }
