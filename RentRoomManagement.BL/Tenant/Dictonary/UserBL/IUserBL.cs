@@ -5,5 +5,6 @@ namespace RentRoomManagement.BL.Tenant.Dictonary
 {
     public interface IUserBL : IBaseBL<UserEntity, UserDtoClient>
     {
+        Task<UserProfileDto?> GetUserProfile(Guid userId);
     }
 }

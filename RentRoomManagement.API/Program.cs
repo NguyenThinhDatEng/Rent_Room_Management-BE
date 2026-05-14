@@ -35,6 +35,8 @@ using RentRoomManagement.DL.Tenant.Dictionary.RoomCategoryDL;
 using RentRoomManagement.DL.Tenant.Dictionary.RoomDL;
 using RentRoomManagement.DL.Tenant.Dictionary.ServiceFeeDL;
 using RentRoomManagement.DL.Tenant.Dictionary.VehicleFeeDL;
+using RentRoomManagement.BL.Tenant.Dictonary;
+using RentRoomManagement.DL.Tenant.Dictionary;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -83,6 +85,9 @@ builder.Services.AddAuthentication(options =>
 // Dependency injectionGetUserOAuth2GetUserOAuth2
 builder.Services.AddScoped<IAuthBL, AuthBL>();
 builder.Services.AddScoped<IAuthDL, AuthDL>();
+
+builder.Services.AddScoped<IUserBL, UserBL>();
+builder.Services.AddScoped<IUserDL, UserDL>();
 
 builder.Services.AddScoped<IRenterDL, RenterDL>();
 
