@@ -56,6 +56,15 @@ namespace RentRoomManagement.API.Controllers.Auth
             });
         }
 
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterParam param)
+        {
+            var (success, message) = await _authBL.Register(param);
+            if (!success)
+                return BadRequest(new { message });
+            return Ok(new { message });
+        }
+
         [HttpPost("login-callback")]
         public async Task<IActionResult> LoginCallback([FromBody] LoginParam login)
         {

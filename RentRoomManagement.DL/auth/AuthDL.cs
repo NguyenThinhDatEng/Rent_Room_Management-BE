@@ -154,5 +154,42 @@ namespace RentRoomManagement.BL
                 return result;
             }
         }
+
+        public async Task<(bool success, string message)> Register(RegisterParam param)
+        {
+            var tableName = "users";
+            using (var connection = new MySqlConnection(DatabaseContext.ConnectionString))
+            {
+                connection.Open();
+
+                var existing = await connection.QueryFirstOrDefaultAsync<UserEntity>(
+                    $"SELECT * FROM {tableName} WHERE user_email = @email OR account = @account LIMIT 1",
+                    new { email = param.Email, account = param.Email });
+
+                if (existing != null)
+                    return (false, "Email đã được sử dụng.");
+
+                var userId = Guid.NewGuid();
+                string hashedPassword = CalculateSHA256Hash(param.Password);
+
+                var sql = $"INSERT INTO {tableName} " +
+                    $"({nameof(UserEntity.user_id)},{nameof(UserEntity.user_name)},{nameof(UserEntity.user_email)},{nameof(UserEntity.account)},{nameof(UserEntity.phone_number)},{nameof(UserEntity.password_hash)}) " +
+                    $"VALUES (@userId, @userName, @email, @account, @phone, @password)";
+
+                var rows = await connection.ExecuteAsync(sql, new
+                {
+                    userId,
+                    userName = param.FullName,
+                    email = param.Email,
+                    account = param.Email,
+                    phone = param.PhoneNumber,
+                    password = hashedPassword
+                });
+
+                return rows > 0
+                    ? (true, "Đăng ký thành công.")
+                    : (false, "Đăng ký thất bại.");
+            }
+        }
     }
 }

@@ -7,5 +7,6 @@ namespace RentRoomManagement.DL.auth
     {
         Task<UserDtoClient?> ValidateLogin(LoginParam loginParam);
         Task<UserDtoClient?> GetUserOAuth2(LoginParam loginParam);
+        Task<(bool success, string message)> Register(RegisterParam param);
     }
 }

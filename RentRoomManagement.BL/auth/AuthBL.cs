@@ -45,5 +45,19 @@ namespace RentRoomManagement.BL
             var user = await _authDL.GetUserOAuth2(param);
             return user;
         }
+
+        public async Task<(bool success, string message)> Register(RegisterParam param)
+        {
+            if (param == null ||
+                string.IsNullOrWhiteSpace(param.Email) ||
+                string.IsNullOrWhiteSpace(param.FullName) ||
+                string.IsNullOrWhiteSpace(param.PhoneNumber) ||
+                string.IsNullOrWhiteSpace(param.Password))
+            {
+                return (false, "Vui lòng điền đầy đủ thông tin.");
+            }
+
+            return await _authDL.Register(param);
+        }
     }
 }

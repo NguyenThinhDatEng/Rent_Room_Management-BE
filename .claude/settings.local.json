@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(rtk git *)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(rtk find *)",
+      "Bash(rtk ls *)",
+      "Bash(rtk grep *)",
+      "Bash(xargs grep *)",
+      "Read(//c/Users/thinh/source/repos/**)",
+      "Bash(rtk wc *)"
     ]
   }
 }
