@@ -191,7 +191,7 @@ namespace RentRoomManagement.DL
                 $"{whereClause} " +
                 $"{sortClause} " +
                 $"{take};";
-            result.Data = await connection.QueryAsync<TDto>(query);
+            result.Data = (await connection.QueryAsync<TDto>(query)).ToList();
 
             string countQuery = $"SELECT COUNT(*) FROM {tableName} {whereClause}";
             result.TotalCount = await connection.QueryFirstAsync<int>(countQuery);
@@ -243,7 +243,7 @@ namespace RentRoomManagement.DL
                 $"{whereClause} " +
                 $"{sortClause}";
 
-            var result = await connection.QueryAsync<TT>(query) as List<TT>;
+            var result = (await connection.QueryAsync<TT>(query)).ToList();
 
             await connection.CloseAsync();
 
@@ -265,7 +265,7 @@ namespace RentRoomManagement.DL
             // Thực hiện chèn dữ liệu vào bảng
             var sql = $"SELECT * FROM {BuildQuery.TableNameMapper<TDto>()}";
 
-            records = await connection.QueryAsync<TDto>(sql) as List<TDto>;
+            records = (await connection.QueryAsync<TDto>(sql)).ToList();
 
             await connection.CloseAsync();
 
