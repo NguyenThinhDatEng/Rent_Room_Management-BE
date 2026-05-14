@@ -1,0 +1,23 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userprefs
+
+# Build output
+bin/
+obj/
+
+# NuGet
+packages/
+*.nupkg
+*.nuget.props
+*.paket.props
+*.paket.targets
+
+# Cache files
+*.cache
+
+# IDE
+*.vscode/
+.idea/
