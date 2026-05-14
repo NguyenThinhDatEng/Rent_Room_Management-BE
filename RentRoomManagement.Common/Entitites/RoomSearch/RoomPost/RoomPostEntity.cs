@@ -55,5 +55,7 @@ namespace RentRoomManagement.Common.Entitites.RoomSearch.RoomPost
         public int? room_type {  get; set; }
 
         public DateTime? created_date { get; set; }
+
+        public string? reject_message { get; set; }
     }
 }

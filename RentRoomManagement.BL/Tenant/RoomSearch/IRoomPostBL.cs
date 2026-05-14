@@ -33,5 +33,7 @@ namespace RentRoomManagement.BL.Tenant.RoomSearch
         void DeleteLinking(Guid roomSeekerId);
 
         Task<RoomPostDtoClient> GetNew(RoomPostParam roomPostParam);
+
+        Task<int> UpdatePostStatus(PostStatusUpdatingParam param);
     }
 }

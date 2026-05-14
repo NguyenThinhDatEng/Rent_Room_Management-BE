@@ -180,5 +180,10 @@ namespace RentRoomManagement.BL.Tenant.RoomSearch
         {
             return await _roomPostDL.GetNew(roomPostParam);
         }
+
+        public async Task<int> UpdatePostStatus(PostStatusUpdatingParam param)
+        {
+            return await _roomPostDL.UpdatePostStatus(param);
+        }
     }
 }

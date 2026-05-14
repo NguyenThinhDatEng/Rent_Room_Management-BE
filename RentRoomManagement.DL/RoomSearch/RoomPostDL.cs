@@ -208,6 +208,27 @@ namespace RentRoomManagement.DL.RoomSearch
             }
         }
 
+        public async Task<int> UpdatePostStatus(PostStatusUpdatingParam param)
+        {
+            using (var connection = new MySqlConnection(DatabaseContext.ConnectionString))
+            {
+                await connection.OpenAsync();
+
+                var tableName = BuildQuery.TableNameMapper<RoomPostEntity>();
+                var sql = $"UPDATE {tableName} SET " +
+                    $"{nameof(RoomPostEntity.post_status)} = @postStatus, " +
+                    $"{nameof(RoomPostEntity.reject_message)} = @rejectMessage " +
+                    $"WHERE {nameof(RoomPostEntity.room_post_id)} = @roomPostId";
+
+                return await connection.ExecuteAsync(sql, new
+                {
+                    postStatus = param.PostStatus,
+                    rejectMessage = param.RejectMessage,
+                    roomPostId = param.RoomPostId
+                });
+            }
+        }
+
         public async Task<RoomPostDtoClient> GetNew(RoomPostParam roomPostParam)
         {
             var connection = new MySqlConnection(DatabaseContext.ConnectionString);

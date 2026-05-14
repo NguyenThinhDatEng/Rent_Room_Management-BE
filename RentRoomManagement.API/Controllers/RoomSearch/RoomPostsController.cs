@@ -129,5 +129,13 @@ namespace RentRoomManagement.API.Controllers.RoomSearch
             _roomPostBL.DeleteLinking(roomSeekerId);
             return Ok(true);
         }
+
+        [Authorize]
+        [HttpPut("post-status")]
+        public async Task<IActionResult> UpdatePostStatus([FromBody] PostStatusUpdatingParam param)
+        {
+            var affectedRows = await _roomPostBL.UpdatePostStatus(param);
+            return StatusCode(StatusCodes.Status200OK, affectedRows);
+        }
     }
 }
