@@ -186,9 +186,14 @@ namespace RentRoomManagement.BL
                     password = hashedPassword
                 });
 
-                return rows > 0
-                    ? (true, "Đăng ký thành công.")
-                    : (false, "Đăng ký thất bại.");
+                if (rows <= 0)
+                    return (false, "Đăng ký thất bại.");
+
+                await connection.ExecuteAsync(
+                    "INSERT INTO user_roles (user_id, role_id) VALUES (@userId, @roleId)",
+                    new { userId, roleId = (int)param.Role });
+
+                return (true, "Đăng ký thành công.");
             }
         }
     }
